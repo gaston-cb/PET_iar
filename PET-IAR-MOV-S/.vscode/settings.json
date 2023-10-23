@@ -1,0 +1,40 @@
+{
+    // These settings tweaks to the cmake plugin will ensure
+    // that you debug using cortex-debug instead of trying to launch
+    // a Pico binary on the host
+    "cmake.statusbar.advanced": {
+        "debug": {
+            "visibility": "default"
+        },
+        "launch": {
+            "visibility": "default"
+        },
+        "build": {
+            "visibility": "default"
+        },
+        "buildTarget": {
+            "visibility": "default"
+        }
+    },
+    "cortex-debug.openocdPath": "/usr/local/bin/openocd",
+    "cortex-debug.gdbPath":"gdb-multiarch",
+    "cmake.buildBeforeRun": true,
+    //"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.associations": {
+        "limits.h": "c",
+        "fsm_main_app.h": "c",
+        "quadrature_encoders.h": "c",
+        "i2c_slave.h": "c",
+        "pid_digital.h": "c",
+        "pwm_control.h": "c",
+        "i2c.h": "c",
+        "irq.h": "c",
+        "limit_switch.h": "c"
+    },
+    // "files.associations": {
+    //     "hello.pio.h": "c",
+    //     "pwm_control.h": "c",
+    //     "quadrature_encoders.h": "c",
+    //     "stdlib.h": "c"
+    // }s
+}

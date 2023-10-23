@@ -1,0 +1,18 @@
+"filename", "language", "CMake", "C", "Markdown", "C++", "Shell Script", "comment", "blank", "total"
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/README.md", "Markdown", 0, 0, 14, 0, 0, 0, 4, 18
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/fsm_main_app/inc/fsm_main_app.h", "C++", 0, 0, 0, 18, 0, 8, 9, 35
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/fsm_main_app/src/fsm_main_app.c", "C", 0, 114, 0, 0, 0, 12, 25, 151
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/i2c_slave/inc/i2c_slave.h", "C++", 0, 0, 0, 8, 0, 6, 4, 18
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/i2c_slave/src/i2c_slave.c", "C", 0, 89, 0, 0, 0, 3, 30, 122
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/limit_switch/inc/limit_switch.h", "C++", 0, 0, 0, 8, 0, 4, 8, 20
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/limit_switch/src/limit_switch.c", "C", 0, 23, 0, 0, 0, 8, 16, 47
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/pid_digital/inc/pid_digital.h", "C++", 0, 0, 0, 3, 0, 0, 5, 8
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/pid_digital/src/pid_digital.c", "C", 0, 43, 0, 0, 0, 8, 16, 67
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/pwm_control/inc/pwm_control.h", "C++", 0, 0, 0, 12, 0, 5, 2, 19
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/pwm_control/src/pwm_control.c", "C", 0, 30, 0, 0, 0, 3, 13, 46
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/quadrature_encoders/inc/quadrature_encoders.h", "C++", 0, 0, 0, 25, 0, 0, 17, 42
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/app/quadrature_encoders/src/quadrature_encoders.c", "C", 0, 243, 0, 0, 0, 11, 57, 311
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/load_code.sh", "Shell Script", 0, 0, 0, 0, 1, 0, 0, 1
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/main/main.c", "C", 0, 93, 0, 0, 0, 11, 27, 131
+"/home/gvaldez/Documents/control_antena_sc/pico_encoders_altaz/pico_sdk_import.cmake", "CMake", 62, 0, 0, 0, 0, 0, 12, 74
+"Total", "-", 62, 635, 14, 74, 1, 79, 245, 1110

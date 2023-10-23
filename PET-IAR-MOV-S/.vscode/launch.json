@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RPICO_debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/main/main.elf",
+            "request": "launch",
+            "type":"cortex-debug",
+            "servertype": "openocd",
+            // This may need to be arm-none-eabi-gdb depending on your system
+            "gdbPath" : "gdb-multiarch",
+            "device": "RP2040",
+            // Connect to an already running OpenOCD instance
+            "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg",
+            ],
+            "runToEntryPoint": "main",
+            // Work around for stopping at main on restart
+            "openOCDLaunchCommands":["adapter speed 5000"],
+
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ]
+        }
+    ]
+}
