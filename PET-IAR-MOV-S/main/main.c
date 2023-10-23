@@ -29,6 +29,14 @@
 #define FINAL_A_PIN 21u // Final de carrera H GPIO 28 (pico pin 34)
 /// TIME IN MS
 #define SAMPLING_TIME 1 /// TIME SAMPLING IN miliseconds
+typedef enum{
+    CALIBRATION, 
+    MANUAL, 
+    AUTOMATIC,
+    ENGINEER, 
+}use_mode_t; 
+
+
 
 /// Constantes PID
 float kp = 1.0;
@@ -58,7 +66,6 @@ volatile uint16_t counter_test = 0;
 // Definicion de funciones
 
 void core1task(void);
-
 bool systick(struct repeating_timer *t);
 void motor_stop(void);
 void motor_move_ah(uint16_t vel);
@@ -80,35 +87,6 @@ void main()
     printf("----- INICIO ROTADOR - IAR ------\r\n");
     printf("=================================\r\n");
     float angle_set ; 
-    printf("setting minimum value") ; 
-    ///diference > xV -> movement -> setting min
-    /// search minpwm ah ;
-
-    for (uint i = 0; i<TOP_VALUE_COUNT+1;i++){ 
-        bridge_h.port_l = i ; 
-        set_pwm(&bridge_h); 
-        sleep_ms(200) ; 
-        ///change value > xMV -> break and setminsh 
-    }
-    /// set_minsa()
-    /// search minpwm h ;
-
-    bridge_h.port_r = 0 ; 
-    for (uint i = 0; i<TOP_VALUE_COUNT+1;i++){ 
-        bridge_h.port_l = i ; 
-        set_pwm(&bridge_h); 
-        sleep_ms(200) ; 
-        ///change value > xMV -> break and setminsa 
-    }
-
-
-    /// set_minsh()
-    /// set_min 
-    /// 
-    /// calibration mode -> not pointer source 
-
-
-
     while (1)
     {
         if (new_cmd == true)        // Si llega un comando por I2C
@@ -190,13 +168,14 @@ void main()
             compute_pid(set_point,(float)(counter_test / 1000));
             counter_test = 0;
         }
-        // Alive test
-//         get_sample(&encoder_ag) ; 
-//         printf("an-value: %d -angle: %.3f \r\n", encoder_ag.angle_read, encoder_ag.angle) ; 
+//      Alive test
+//      get_sample(&encoder_ag) ; 
+//      printf("an-value: %d -angle: %.3f \r\n", encoder_ag.angle_read, encoder_ag.angle) ; 
     }
 }
 /*================ FUNCIONES CORE 0 ==========================================================*/
 /**
+ * 
  * @brief   Callback para el timer
  * 
  * @param t variable tipo repeating_timer
