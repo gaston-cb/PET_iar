@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #define ANTICLOCKWISE_START 'a'
 #define CLOCKWISE_START 'h'
 #define STOP_COMMAND 's'
@@ -11,6 +13,5 @@
 #define SET_ANGLE 'l' 
 #define PARK_ANTENNA 'P' 
 #define TRACKING_MODE 't'
-
-
+void command_receive(const uint8_t *buffer,const uint8_t length_buffer) ; 
 

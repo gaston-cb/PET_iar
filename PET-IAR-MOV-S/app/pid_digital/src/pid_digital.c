@@ -1,13 +1,13 @@
 #include "pwm_control.h" 
 
 #include <stdio.h>
-
+#include "string.h"
 
 #include "pid_digital.h" 
 //#include "quadrature_encoders.h"
 
 
-
+static cfg_pid pid_parameters;  
 static float kp,ki,kd; 
 static float error = 0 ; 
 static float last_error = 0 ; 
@@ -26,6 +26,12 @@ void setttings_pid(float proportional, float integral, float derivative){
     kd = derivative;
     get_pwm(&pwm_motor); 
     last_error = 0;
+    pid_parameters.kd = kd ; 
+    pid_parameters.ki = ki ; 
+    pid_parameters.kp = kp ; 
+    
+
+
 }
 
 
@@ -65,10 +71,23 @@ void compute_pid(float sp, float period_sample) {
 
 void set_minsh(uint16_t set_min){
     min_sh = set_min;
+    pid_parameters.min_pwmh = set_min ; 
 } 
 
 void set_minsa(uint16_t set_min){
     min_sa = set_min ;     
+    pid_parameters.min_pwmah = set_min ; 
 } 
 
 
+void get_pid(cfg_pid *pid){
+    memcpy(pid ,&pid_parameters,sizeof(cfg_pid)) ; 
+}
+
+
+void run_pid(){
+    
+}
+void angle_set_point(float *sp){ 
+    
+}

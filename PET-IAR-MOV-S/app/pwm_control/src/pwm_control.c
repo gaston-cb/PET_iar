@@ -36,10 +36,6 @@ void set_pwm(BTS7960_t *config_port ){
 }
 
 
-
-
-
-
 void get_pwm(BTS7960_t *config_port){
     
     memcpy(config_port,&pwm_ports ,sizeof(BTS7960_t)) ; 
