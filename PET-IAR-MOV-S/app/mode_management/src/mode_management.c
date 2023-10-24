@@ -14,10 +14,18 @@ typedef enum
 
 mode_management_t mode_var  ; 
 static BTS7960_t pwm_motor    ; 
-static void engineer_mode()   ; 
-static void manual_mode     (); 
-static void calibration_mode(); 
-static void automatic_mode  (); 
+static void engineer_mode(const uint8_t *buffer)   ; 
+static void manual_mode(const uint8_t *buffer); 
+static void calibration_mode(const uint8_t *buffer); 
+static void automatic_mode  (const uint8_t *buffer); 
+static void motor_ah(const uint16_t pwm_value); 
+static void motor_h(const uint16_t pwm_value); 
+static void motor_stop(); 
+
+
+
+
+
 
 /// @brief  test function and set mode initial 
 /// @param mode 
@@ -25,9 +33,8 @@ void set_mode(mode_management_t mode){
     mode_var = mode ; 
 }
 
-//mode_management_t get_mode(void){ 
-//    return mode_var ; 
-//}
+
+
 
 void command_receive(const uint8_t *buffer,const uint8_t length_buffer){
 
@@ -40,16 +47,16 @@ void command_receive(const uint8_t *buffer,const uint8_t length_buffer){
     switch (mode_var)
     {
         case ENGINEER:
-            engineer_mode() ; 
+            engineer_mode(buffer) ; 
             break;
         case MANUAL:
-            manual_mode() ; 
+            manual_mode(buffer) ; 
             break;
         case CALIBRATION:
-            calibration_mode() ; 
+            calibration_mode(buffer) ; 
             break;
         case AUTOMATIC:
-            automatic_mode() ; 
+            automatic_mode(buffer) ; 
             break;    
         default:
             break;
@@ -111,7 +118,7 @@ static void engineer_mode(const uint8_t *buffer){
 
 
 
-static void manual_mode(const char *buffer){
+static void manual_mode(const uint8_t *buffer){
 ///    a -> movimiento antihorario 
 ///h -> movimiento horario 
 ///s -> frenar motor (stop motor) 
@@ -168,7 +175,6 @@ static void calibration_mode(const uint8_t *buffer){
 ///	t  -> tracking mode source: 
 ///una vez enviado esta posición, se debe empezar a enviar el ángulo de setpoint a seguir. 
 ///u-> set point 
-
 static void automatic_mode(const uint8_t *buffer){
     switch ((char)buffer[0])
     {
