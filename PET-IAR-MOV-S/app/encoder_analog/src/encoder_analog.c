@@ -1,96 +1,111 @@
 #include "encoder_analog.h" 
 #include "hardware/adc.h"
 #include "hardware/dma.h"
+#include "string.h"
 #include "hardware/irq.h"
-#include <string.h>
 // internal function 
-#define SAMPLES_NUMBER 17 
-#define MIN_ADC_PORT /// 
+#define SAMPLES_NUMBER 50 
 static volatile uint16_t sample_filter ; 
-static encoder_analog_t encoder_analog; 
-
 static uint16_t samples_analog[SAMPLES_NUMBER] ; 
 static uint8_t _number_sample = 0 ; 
+static int16_t value_zero = 0; 
+static int16_t value_max  = 0; 
+static float deltay = 90.0; 
+static volatile uint16_t  sample_adc_antenna; 
+volatile static uint channel_adc = 0 ; 
+volatile static uint16_t reference ; 
 
-
+encoder_quad_t encoder; 
+static int16_t deltax = 4096 ; 
 static void order_samples() ; 
 static void median_filter() ; 
 static void irq_dma_rx(void ) ; 
 
-static bool isZeroValue  = false ;  
-static bool isAngleValue = false ;   
+
+void getData(encoder_quad_t *quadrature_enc) {
+    memcpy(quadrature_enc ,&encoder ,sizeof(encoder_quad_t)) ; 
+} 
+
+void set90(){ 
+    encoder.angle = MAX_ANGLE;
+    encoder.raw_data = sample_filter;   // cuentas equivalentes a 90º 
+    encoder.direccion = COUNTER_STILL;
+    value_max = encoder.raw_data ; 
+    deltay = MAX_ANGLE - MIN_ANGLE ; 
+    deltax = value_max - value_zero ; 
+
+
+
+}
+ 
 
 
 
 
 bool init_encoder_analog(uint8_t port_analog_read){
     adc_init() ; 
-    adc_gpio_init(port_analog_read);
-//adc_select_input(port_analog_read-MIN_ADC_PORT); 
-    ///FIXME: change with adc automatic selection using number 
-    adc_select_input(2); 
+    adc_set_round_robin(0x03) ;// 0011
     adc_fifo_setup(
-        true,    // Write each completed conversion to the sample FIFO
+        true,     // Write each completed conversion to the sample FIFO
         false,    // Enable DMA data request (DREQ)
-        1,       // DREQ (and IRQ) asserted when at least 1 sample present
+        1,        // DREQ (and IRQ) asserted when at least 1 sample present
         false,    // We won't see the ERR bit because of 8 bit reads; disable.
         false     // Shift each sample to 8 bits when pushing to FIFO
     );
-    adc_set_clkdiv(9600);
+    adc_set_clkdiv(9600.0);
     irq_set_exclusive_handler(ADC_IRQ_FIFO, irq_dma_rx);
 	adc_irq_set_enabled(true);
 	irq_set_enabled(ADC_IRQ_FIFO, true);
 	adc_run(true);
+    encoder.state = STATE_00 ; 
     return true ;   
-
 } 
 
-uint16_t get_sample(encoder_analog_t *encoder){ 
-    if (isAngleValue==true && isZeroValue==true){ 
-        ///COMPUTE ANGLE 
-    }
-    memcpy(encoder,&encoder_analog,sizeof(encoder_analog_t)) ; 
 
+
+void setZero(){
+    encoder.angle = MIN_ANGLE;
+    encoder.raw_data = sample_filter;
+    value_zero =   encoder.raw_data ; 
+    encoder.direccion = COUNTER_STILL; 
+}  
+
+
+
+uint16_t get_reference(void){ 
+    return reference; 
 }
-
-void set_zero(){ 
-    isZeroValue = true ; 
-    encoder_analog.zero_value = samples_analog[SAMPLES_NUMBER/2] ; 
-}
-
-
-void set_max_value(){ 
-    encoder_analog.max_value = samples_analog[SAMPLES_NUMBER/2] ; 
-
-}
-
-
 void irq_dma_rx(void ){ 
-    samples_analog[_number_sample] =  (uint16_t)adc_hw->fifo;
-    _number_sample++ ; 
+    channel_adc= adc_get_selected_input() ; 
+    if (channel_adc == (uint)0){ 
+        reference = (uint16_t)adc_hw->fifo; 
+        return ; 
+    }else if (channel_adc == (uint)1){
+        sample_adc_antenna = (uint16_t)adc_hw->fifo ; 
+        samples_analog[_number_sample] = sample_adc_antenna>=reference?sample_adc_antenna-reference:0 ; 
+        _number_sample++ ; 
+    }else{
+        return ; 
+    }
     if (_number_sample == SAMPLES_NUMBER){ 
+     	//adc_run(false);
+
         _number_sample = 0 ; 
         median_filter() ; 
+     	//adc_run(true);
+
     }
 
 }
 
 
-void set_angle(float angle_set){ 
-    adc_run(false) ; 
-    isAngleValue = true ; 
-    encoder_analog.adc_angle_set = samples_analog[SAMPLES_NUMBER/2] ; 
-    encoder_analog.angle_set = angle_set ; 
-    adc_run(true) ; 
 
-
-
-}
 
 void median_filter(){
     order_samples() ; 
-    encoder_analog.angle_read = samples_analog[SAMPLES_NUMBER/2] ; 
-    //encoder_analog.angle = (90.0/encoder_analog.max_value-encoder_analog.zero_value)*(encoder_analog.angle_read -encoder_analog.zero_value)    ; 
+    sample_filter = samples_analog[SAMPLES_NUMBER/2] ; 
+    encoder.raw_data = (int16_t)sample_filter ; 
+    encoder.angle = (float)   ((deltay)/deltax)*(float)(encoder.raw_data-value_zero);
 }
 
 

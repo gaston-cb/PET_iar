@@ -54,9 +54,12 @@ static void irq_dma_rx(void ){
 
 static void irq_dma_tx(void) { 
    const uint32_t status = i2c_get_hw(i2c0)->intr_stat;
+
+
    if (status & I2C_IC_INTR_STAT_R_TX_ABRT_BITS) { ///BIT 6 iupi ! 
       i2c0->hw->clr_tx_abrt ; 
    }
+
     if (status & I2C_IC_INTR_STAT_R_STOP_DET_BITS) {
         i2c_get_hw(i2c0)->clr_stop_det;        
 
@@ -66,6 +69,9 @@ static void irq_dma_tx(void) {
         dma_tx(buffer_txI2C) ; 
         dma_channel_set_read_addr(channel_dma_txI2C,buffer_txI2C,true) ; 
     }
+
+
+
 }
 
 

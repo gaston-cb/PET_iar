@@ -1,5 +1,5 @@
 #include "pico/stdlib.h"
-#define BUFFER_TX 36 
+#define BUFFER_TX 4 
 #define BUFFER_RX 4
 //#define SLAVE_I2C 0x42      // Direccion esclavo horizontal
 #define SLAVE_I2C 0x48      // Direccion esclavo vertical

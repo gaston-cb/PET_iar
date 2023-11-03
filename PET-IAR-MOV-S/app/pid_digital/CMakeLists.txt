@@ -17,5 +17,6 @@ target_include_directories(pid_digital PUBLIC
 target_link_libraries(pid_digital 
                       pico_stdlib 
                       pwm_control 
+                      encoder_analog 
                       pico_stdlib
                       limit_switch) 

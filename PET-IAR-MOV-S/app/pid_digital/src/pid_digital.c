@@ -1,18 +1,18 @@
 #include "pwm_control.h" 
 
 #include <stdio.h>
-#include "string.h"
+
 
 #include "pid_digital.h" 
-//#include "quadrature_encoders.h"
+#include "encoder_analog.h"
 
 
-static cfg_pid pid_parameters;  
+
 static float kp,ki,kd; 
 static float error = 0 ; 
 static float last_error = 0 ; 
 static BTS7960_t pwm_motor ; 
-// static encoder_quad_t _encoder ; 
+static encoder_quad_t _encoder ; 
 static uint16_t min_sh ; 
 static uint16_t min_sa ; 
 
@@ -26,12 +26,6 @@ void setttings_pid(float proportional, float integral, float derivative){
     kd = derivative;
     get_pwm(&pwm_motor); 
     last_error = 0;
-    pid_parameters.kd = kd ; 
-    pid_parameters.ki = ki ; 
-    pid_parameters.kp = kp ; 
-    
-
-
 }
 
 
@@ -41,8 +35,8 @@ void compute_pid(float sp, float period_sample) {
     float error_derivativo;
     float output; 
     //_reference = sp; 
-    //getData(&_encoder);
-    error = sp - 10 ; //; _encoder.angle; 
+    getData(&_encoder);
+    error = sp - _encoder.angle; 
     //last_error = error  ;
     //error_integral = (error + last_error); 
     error_derivativo = (error - last_error);///period_sample ; 
@@ -54,40 +48,25 @@ void compute_pid(float sp, float period_sample) {
     last_error = error; 
     ///ver si esta trabado el encoder ! 
     
-    // if ( sp - _encoder.angle >0){
-    //     pwm_motor.percent_r = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
-    //     pwm_motor.percent_l = 0; 
-    // }else if( sp - _encoder.angle  == 0){
-    //     pwm_motor.percent_l = 0; 
-    //     pwm_motor.percent_r = 0; 
-    // }else if ( sp - _encoder.angle  <0){ 
-    //     output = -1.0*output;        
-    //     pwm_motor.percent_r = 0;      
-    //     pwm_motor.percent_l = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
-    // }
+    if ( sp - _encoder.angle >0){
+        pwm_motor.percent_r = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
+        pwm_motor.percent_l = 0; 
+    }else if( sp - _encoder.angle  == 0){
+        pwm_motor.percent_l = 0; 
+        pwm_motor.percent_r = 0; 
+    }else if ( sp - _encoder.angle  <0){ 
+        output = -1.0*output;        
+        pwm_motor.percent_r = 0;      
+        pwm_motor.percent_l = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
+    }
     set_pwm(&pwm_motor) ; 
 }
 
 
 void set_minsh(uint16_t set_min){
     min_sh = set_min;
-    pid_parameters.min_pwmh = set_min ; 
 } 
 
 void set_minsa(uint16_t set_min){
     min_sa = set_min ;     
-    pid_parameters.min_pwmah = set_min ; 
 } 
-
-
-void get_pid(cfg_pid *pid){
-    memcpy(pid ,&pid_parameters,sizeof(cfg_pid)) ; 
-}
-
-
-void run_pid(){
-    
-}
-void angle_set_point(float *sp){ 
-    
-}

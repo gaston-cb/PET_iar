@@ -26,10 +26,7 @@
         "quadrature_encoders.h": "c",
         "i2c_slave.h": "c",
         "pid_digital.h": "c",
-        "pwm_control.h": "c",
-        "i2c.h": "c",
-        "irq.h": "c",
-        "limit_switch.h": "c"
+        "pwm_control.h": "c"
     },
     // "files.associations": {
     //     "hello.pio.h": "c",
