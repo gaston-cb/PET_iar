@@ -9,7 +9,7 @@ static volatile uint16_t sample_filter ;
 static uint16_t samples_analog[SAMPLES_NUMBER] ; 
 static uint8_t _number_sample = 0 ; 
 static int16_t value_zero = 0; 
-static int16_t value_max  = 0; 
+static int16_t value_max  = 4096; 
 static float deltay = 90.0; 
 static volatile uint16_t  sample_adc_antenna; 
 volatile static uint channel_adc = 0 ; 
@@ -19,7 +19,7 @@ encoder_quad_t encoder;
 static int16_t deltax = 4096 ; 
 static void order_samples() ; 
 static void median_filter() ; 
-static void irq_dma_rx(void ) ; 
+static volatile void irq_dma_rx(void ) ; 
 
 
 void getData(encoder_quad_t *quadrature_enc) {
@@ -33,9 +33,6 @@ void set90(){
     value_max = encoder.raw_data ; 
     deltay = MAX_ANGLE - MIN_ANGLE ; 
     deltax = value_max - value_zero ; 
-
-
-
 }
  
 
@@ -44,7 +41,9 @@ void set90(){
 
 bool init_encoder_analog(uint8_t port_analog_read){
     adc_init() ; 
-    adc_set_round_robin(0x03) ;// 0011
+    //adc_gpio_init(26);
+    //adc_select_input(0); 
+    adc_set_round_robin(0x03) ; //0b0011
     adc_fifo_setup(
         true,     // Write each completed conversion to the sample FIFO
         false,    // Enable DMA data request (DREQ)
@@ -52,7 +51,7 @@ bool init_encoder_analog(uint8_t port_analog_read){
         false,    // We won't see the ERR bit because of 8 bit reads; disable.
         false     // Shift each sample to 8 bits when pushing to FIFO
     );
-    adc_set_clkdiv(9600.0);
+    adc_set_clkdiv(9600);
     irq_set_exclusive_handler(ADC_IRQ_FIFO, irq_dma_rx);
 	adc_irq_set_enabled(true);
 	irq_set_enabled(ADC_IRQ_FIFO, true);
@@ -75,14 +74,19 @@ void setZero(){
 uint16_t get_reference(void){ 
     return reference; 
 }
-void irq_dma_rx(void ){ 
+
+
+
+static volatile void irq_dma_rx(void ){ 
     channel_adc= adc_get_selected_input() ; 
+    //samples_analog[_number_sample] = (uint16_t)adc_hw->fifo;//sample_adc_antenna>=reference?sample_adc_antenna-reference:0 ; 
+    //_number_sample++ ; 
     if (channel_adc == (uint)0){ 
         reference = (uint16_t)adc_hw->fifo; 
         return ; 
     }else if (channel_adc == (uint)1){
         sample_adc_antenna = (uint16_t)adc_hw->fifo ; 
-        samples_analog[_number_sample] = sample_adc_antenna>=reference?sample_adc_antenna-reference:0 ; 
+        samples_analog[_number_sample] = sample_adc_antenna>=reference?sample_adc_antenna:0 ; 
         _number_sample++ ; 
     }else{
         return ; 

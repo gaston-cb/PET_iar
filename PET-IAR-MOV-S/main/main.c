@@ -15,21 +15,30 @@
 #include "hardware/gpio.h"
 #include <hardware/clocks.h>
 #include <hardware/timer.h>
-//#include "quadrature_encoders.h"
 #include "encoder_analog.h"
 #include "pwm_control.h"
 #include "pid_digital.h"
 #include "i2c_slave.h"
 #include "limit_switch.h"
 /*================ DEFINICIONES ==============================================================*/
+///ports of i2c 
 #define PORTS_I2C_SDA 4 // I2C SDA GPIO 4 (pico pin 6)
 #define PORTS_I2C_SCL 5 // I2C SCL GPIO 5 (pico pin 7)
+
+/// ports of pwm 
 #define LPWM_PIN 16     // LEFT PWM GPIO 16 (pico pin 21)
 #define RPWM_PIN 18     // RIGHT PWM GPIO 18 (pico pin 24)
-#define A_ENC_PIN 20    // Encoder A GPIO 20 (pico pin 26)
-#define B_ENC_PIN 21    // Encoder B GPIO 21 (pico pin 27)
-#define FINAL_B_PIN 27  // Final de carrera AH GPIO 27 (pico pin 32)
-#define FINAL_A_PIN 28  // Final de carrera H GPIO 28 (pico pin 34)
+
+/// ports of limit switch 
+#define LIMIT_SWITCH_ANGLE_MIN 28  // detección de final de carrera pico pin 34  
+#define LIMIT_SWITCH_ANGLE_MAX 21  // detección de final de carrera pico pin 27   
+// #define MINIMAL_ANGLE 27  // Final de carrera AH GPIO 27 (pico pin 32)
+// #define MAXIMAL_ANGLE 28  // Final de carrera H GPIO 28 (pico pin 34)
+
+/// PORTS OF ADC 
+#define ADC_MEASURE_ANGLE 20    // Encoder A GPIO 20 (pico pin 26)
+#define ADC_REFERENCE 21    // Encoder B GPIO 21 (pico pin 27)
+
 
 /// TIME IN MS
 #define SAMPLING_TIME 1 /// TIME SAMPLING IN miliseconds
@@ -44,6 +53,9 @@ bool PID_state = false;
 static bool new_cmd;
 uint8_t fifo_rx[BUFFER_RX];
 uint8_t fifo_tx[BUFFER_TX];
+volatile void dma_u2(uint16_t *buffertx) ; //callback for use i2c drivers 
+volatile void dma_u1(uint8_t *bufferrx) ;  //callback for use i2c drivers 
+
 
 encoder_quad_t enc_test;
 BTS7960_t bridge_h = {
@@ -76,11 +88,11 @@ void main()
     stdio_init_all();
     init_pwm(&bridge_h);                    // Inicio de pwm
     init_encoder_analog(28) ; 
-    init_switch(FINAL_A_PIN, FINAL_B_PIN);  // Inicio de fin de carrera - final A : sent antihrario, b horario
+    init_switch(LIMIT_SWITCH_ANGLE_MIN, LIMIT_SWITCH_ANGLE_MAX);  // Inicio de fin de carrera - final A : sent antihrario, b horario
+
     multicore_launch_core1(core1task);      // START CORE1
     struct repeating_timer timer;           // Timer
     add_repeating_timer_ms(SAMPLING_TIME, &systick, NULL, &timer);
-    sleep_ms(5000);
     // Mensaje de inicio
     // comando = getchar();        // Se queda aca hasta que no recibe un caracter
     //cero_encoder();                         // Rutina de inicio, busca el cero
@@ -92,7 +104,7 @@ void main()
     {
         if (new_cmd == true)        // Si llega un comando por I2C
         {
-            //printf("Rx cmd i2c \r\n");
+            printf("Rx cmd i2c is :%02x\r\n",fifo_rx[0] );
             new_cmd = false;
             
             switch ((char)fifo_rx[0])
@@ -182,11 +194,11 @@ void main()
             counter_test = 0;
         }
         // Alive test
-        getData(&enc_test);
-        printf("-> Angulo: %0.2f \r\n", enc_test.angle);
-        printf("-> Pulsos: %d \r\n",enc_test.raw_data);
-        printf("%d\r\n",enc_test.raw_data);
-        sleep_ms(1000);
+        // getData(&enc_test);
+        // printf("-> Angulo: %0.2f \r\n", enc_test.angle);
+        // printf("-> adc: %d \r\n",enc_test.raw_data);
+        // printf("%d\r\n",enc_test.raw_data);
+        // sleep_ms(1000);
     }
 }
 /*================ FUNCIONES CORE 0 ==========================================================*/
@@ -284,6 +296,7 @@ volatile void dma_u2(uint16_t *buffertx)
 {
     encoder_quad_t enc;
     getData(&enc);
+    //enc.angle = 33.22f ; 
     //printf("-> Angulo: %0.2f\r\n", enc.angle);
     buffertx[0] = (uint16_t) 'a';    //getState();
     buffertx[1] = (uint16_t)((0xFF00 & ((uint16_t)enc.angle)) >> 8);
@@ -293,7 +306,7 @@ volatile void dma_u2(uint16_t *buffertx)
 
 void core1task(void)
 {
-    init_I2C(4, 5, dma_u1, dma_u2);
+    init_I2C(PORTS_I2C_SDA, PORTS_I2C_SCL, dma_u1, dma_u2);
 
     while (1)
     {

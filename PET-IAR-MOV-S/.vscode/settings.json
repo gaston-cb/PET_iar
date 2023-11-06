@@ -28,6 +28,7 @@
         "pid_digital.h": "c",
         "pwm_control.h": "c"
     },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     // "files.associations": {
     //     "hello.pio.h": "c",
     //     "pwm_control.h": "c",

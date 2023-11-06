@@ -36,25 +36,23 @@
 #define CLIENT_ID "ROT_IAR" // ID del cliente mqtt
 
 #define V_MAX 12500     // Valor de la cuenta del esclavo para la velocidad maxima
+#define TOPIC1  "rotador/movimiento_h"
+#define TOPIC2  "rotador/pid_h"
+#define TOPIC3  "rotador/movimiento_v"
+#define TOPIC4  "rotador/pid_v"
+
 // FUNCIONES
 void callback(char *topic, byte *payload, unsigned int length); // Funcion para la recepcion via MQTT
 void reconnect(void);                                           // Reconectar al servidor mqtt
 void ftostr(float val, char *dato);
 // DEFINICIONES PARA LA CONEXION ETHERNET CON ENC28J60
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xEF};  // Dirección MAC del módulo Ethernet
-IPAddress server(163, 10, 43, 68);                  // IP del broker MQTT
+IPAddress server(192, 168, 0,185);                  // IP del broker MQTT
 EthernetClient client;                              // Cliente Ethernet
 PubSubClient mqttClient(client);                    // Cliente mqtt
 
 // DEFINICION DE OBJETO PARA SENSOR DE CORRIENTE INA3221
-INA3221 ina_0(INA3221_ADDR41_VCC);    // Direccion 0x41 (A0 pin -> VCC)
 
-float i_amp1, v_amp1; // Corriente y tension del amplificador 1
-//float i_amp2, v_amp2; // Corriente y tension del amplificador 2
-//float i_amp3, v_amp3; // Corriente y tension del amplificador 3
-float i_amp1_span = 1.00, v_amp1_span = 1.00;
-//float i_amp2_span = 1.00, v_amp2_span = 1.00;
-//float i_amp3_span = 1.00, v_amp3_span = 1.00;
 
 // DEFINICION DE OBJETO PARA LA COMUNICACION I2C CON LAS PLACAS ESCLAVO
 rot_iar rotador_h(ROT_IAR_PE_H_ADDR);
@@ -97,7 +95,8 @@ void setup()
   digitalWrite(DO3_PIN, LOW);
   digitalWrite(LED1_PIN, LOW);
   digitalWrite(LED2_PIN, LOW);
-
+  delay(2000) ; 
+  Serial.println("init a software master i3c") ; 
   // Espero a que se aprete una tecla para poder verificar por puerto
   // serie la conexion al broker mqtt. Despues se comenta
   /*while(!Serial.available()){
@@ -138,17 +137,17 @@ void setup()
     reconnect();
   }
   // Suscripciones MQTT
-  mqttClient.subscribe("rotador/movimiento_h");
-  mqttClient.subscribe("rotador/pid_h");
-  mqttClient.subscribe("rotador/movimiento_v");
-  mqttClient.subscribe("rotador/pid_v");
+  mqttClient.subscribe(TOPIC1);
+  mqttClient.subscribe(TOPIC2);
+  mqttClient.subscribe(TOPIC3);
+  mqttClient.subscribe(TOPIC3);
   mqttClient.loop();
 
   // Inicio INA3221
-  ina_0.begin(&Wire);
-  ina_0.reset();
-  ina_0.setShuntRes(100, 100, 100);
-  ina_0.setFilterRes(10, 10, 10);
+  // ina_0.begin(&Wire);
+  // ina_0.reset();
+  // ina_0.setShuntRes(100, 100, 100);
+  // ina_0.setFilterRes(10, 10, 10);
 
   // Inicion i2c placas esclavo
   rotador_h.begin(&Wire);
@@ -289,19 +288,15 @@ void loop()
         Serial.print("-> Velocidad horizontal: ");
         Serial.println(velocidad_v);
         break;
+      case 'C':
+        Serial.println("c is received") ; 
+        dato_mqtt = 31354 ;  // ''zz''
+        rotador_v.write(ROT_IAR_REG_CERO, &dato_mqtt);
+
+        break ; 
       /*** Otros casos ***/
       case 'x':             // Prueba de INA3221
-        i_amp1 = ina_0.getCurrent(INA3221_CH1) * i_amp1_span;   // Coriente amplificador 1
-        v_amp1 = ina_0.getVoltage(INA3221_CH1) * v_amp1_span;   // Tension amplificador 1
-        //i_amp2 = ina_0.getCurrent(INA3221_CH2) * i_amp2_span;   // Coriente amplificador 2
-        //v_amp2 = ina_0.getVoltage(INA3221_CH2) * v_amp2_span;   // Tension amplificador 2
-        //i_amp3 = ina_0.getCurrent(INA3221_CH3) * i_amp2_span;   // Coriente amplificador 3
-        //v_amp3 = ina_0.getVoltage(INA3221_CH3) * v_amp3_span;   // Tension amplificador 3
-        Serial.println("----------------------------------------");
-        Serial.print("I_CH1="); Serial.print((uint16_t)i_amp1);
-        Serial.print("mA / V_CH1="); Serial.print(v_amp1);
-        Serial.println("V *");
-        Serial.println("----------------------------------------");
+    
         break;
       default:
         Serial.println("-> Comando incorrecto :(");
@@ -317,11 +312,13 @@ void loop()
     //if (estado_motor_h != STOP)     // Si el motor se esta moviendo
     //{                               // Pido el valor del angulo y lo envio por mqtt
     rotador_h.read(ROT_IAR_REG_ANGULO, &angulo_h);
-      //Serial.print("-> Angulo: ");Serial.println(angulo_h);
+    Serial.print("-> Angulo h: ");Serial.print(angulo_h);
     ftostr(angulo_h,&angulo_str[0]);
     mqttClient.publish("rotador/angulo_h",angulo_str);
 
     rotador_v.read(ROT_IAR_REG_ANGULO, &angulo_v);
+    Serial.print("-> Angulo v: ");Serial.println(angulo_v);
+    
     ftostr(angulo_v,&angulo_str[0]);
     mqttClient.publish("rotador/angulo_v",angulo_str);
     //}
@@ -402,5 +399,12 @@ void ftostr(float val, char *dato)
   //dato[4] = decimal + 48;
   dato[3] = '\0';
 }
+
+void command_received_topic(){ 
+
+}
+
+
+
 /* ============================================================================= */
 // EOF

@@ -4,7 +4,7 @@
 #define FC_H 1
 #define FC_AH 2
 
-#define LEVEL_DETECTED_CLOSE_SWITCH 1 //LOW -  0 , HIGH =  1  
+#define LEVEL_DETECTED_CLOSE_SWITCH 0 //LOW -  0 , HIGH =  1  
 typedef struct {
     uint16_t limit_switch_port_a ;
     uint16_t limit_switch_port_b ; 

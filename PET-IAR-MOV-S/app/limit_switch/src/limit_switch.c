@@ -26,10 +26,10 @@ void init_switch(uint switch_port_a, uint switch_port_b){
  */                 
 volatile uint8_t isSwitchOn(){
     uint8_t state_return = 0  ; 
-    if ( gpio_get( limit_switch.limit_switch_port_a ) != 0){
+    if ( gpio_get( limit_switch.limit_switch_port_a ) == 0){
         printf("-> FIN movimiento horario - FC A\r\n"); 
         state_return = FC_H; 
-    } else if (gpio_get( limit_switch.limit_switch_port_b ) != 0){
+    } else if (gpio_get( limit_switch.limit_switch_port_b ) == 0){
         printf("-> FIN movimiento antihorario - FC B\r\n");
         state_return = FC_AH; 
     } 

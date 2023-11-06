@@ -1,4 +1,4 @@
-#include "INA3221.h"
+#include "ina3221.h"
 
 void INA3221::_read(ina3221_reg_t reg, uint16_t *val) {
     _i2c->beginTransmission(_i2c_addr);

@@ -10,8 +10,8 @@ add_library(encoder_analog
 target_include_directories(encoder_analog PUBLIC 
     ${CMAKE_CURRENT_LIST_DIR}/inc)  
 
-
-target_link_libraries(encoder_analog           
+target_link_libraries(encoder_analog
+                     hardware_gpio           
                      hardware_adc
                      hardware_dma
                      hardware_irq) 
