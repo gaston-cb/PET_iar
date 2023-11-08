@@ -39,7 +39,7 @@ void compute_pid(float sp, float period_sample) {
     error = sp - _encoder.angle; 
     //last_error = error  ;
     //error_integral = (error + last_error); 
-    error_derivativo = (error - last_error);///period_sample ; 
+    error_derivativo = (error - last_error); ///period_sample ; 
     
     //output = error* constants_of_pid[0]+error_derivativo*constants_of_pid[1]+error_integral* constants_of_pid[2] ; 
     
