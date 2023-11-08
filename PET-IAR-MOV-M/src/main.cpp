@@ -47,7 +47,7 @@ void reconnect(void);                                           // Reconectar al
 void ftostr(float val, char *dato);
 // DEFINICIONES PARA LA CONEXION ETHERNET CON ENC28J60
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xEF};  // Dirección MAC del módulo Ethernet
-IPAddress server(192, 168, 0,185);                  // IP del broker MQTT
+IPAddress server(192, 168, 1,100);                  // IP del broker MQTT
 EthernetClient client;                              // Cliente Ethernet
 PubSubClient mqttClient(client);                    // Cliente mqtt
 
@@ -142,14 +142,6 @@ void setup()
   mqttClient.subscribe(TOPIC3);
   mqttClient.subscribe(TOPIC3);
   mqttClient.loop();
-
-  // Inicio INA3221
-  // ina_0.begin(&Wire);
-  // ina_0.reset();
-  // ina_0.setShuntRes(100, 100, 100);
-  // ina_0.setFilterRes(10, 10, 10);
-
-  // Inicion i2c placas esclavo
   rotador_h.begin(&Wire);
   rotador_v.begin(&Wire);
   
@@ -287,17 +279,12 @@ void loop()
         velocidad_v = (dato_mqtt/100) * V_MAX / 100;
         Serial.print("-> Velocidad horizontal: ");
         Serial.println(velocidad_v);
-        break;
-      case 'C':
-        Serial.println("c is received") ; 
-        dato_mqtt = 31354 ;  // ''zz''
-        rotador_v.write(ROT_IAR_REG_CERO, &dato_mqtt);
-
         break ; 
+      case 'X': 
+        dato_mqtt = 31354;  // 'zz'
+        rotador_v.write(ROT_IAR_REG_CERO, &dato_mqtt);
+        break ;         
       /*** Otros casos ***/
-      case 'x':             // Prueba de INA3221
-    
-        break;
       default:
         Serial.println("-> Comando incorrecto :(");
     }

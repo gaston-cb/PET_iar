@@ -36,26 +36,8 @@ void rot_iar::read(rot_iar_pe_reg_t reg, float *val){
 
     _i2c->requestFrom((uint8_t)_i2c_addr, (uint8_t)4,true);
     if (_i2c->available()) {
-        int estado = _i2c->read();
-        //buffer_read[0] = _i2c->read() ; 
-        //buffer_read[1] = _i2c->read() ; 
-        //buffer_read[2] = _i2c->read() ; 
-        //buffer_read[3] = _i2c->read() ; 
-        
+        int estado = _i2c->read();   
         *val = (float)((_i2c->read() * 256.0) + _i2c->read() ) + (_i2c->read()  / 100.0);
-
-        // *val = (float)((buffer_read[1] * 256.0) + buffer_read[2] ) + (buffer_read[3]  / 100.0);
-
-
     }
-    //_i2c->end() ; 
-    // Serial.print(" ") ; 
-    // Serial.print(buffer_read[0]) ;     Serial.print(" ") ; 
-
-    // Serial.print(buffer_read[1]) ;     Serial.print(" ") ; 
-
-    // Serial.print(buffer_read[2]) ;     Serial.print(" ") ; 
-
-    // Serial.println(buffer_read[3]) ; 
-
+ 
 }
