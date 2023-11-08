@@ -80,7 +80,6 @@ bool systick(struct repeating_timer *t);
 void motor_stop(void);
 void motor_move_ah(uint16_t vel);
 void motor_move_h(uint16_t vel);
-void cero_encoder(void);
 
 /*================ MAIN CORE 0 ===============================================================*/
 void main()
@@ -104,88 +103,73 @@ void main()
     {
         if (new_cmd == true)        // Si llega un comando por I2C
         {
-            printf("Rx cmd i2c is :%02x\r\n",fifo_rx[0] );
+            printf("Rx cmd i2c is :%c\r\n",(char)fifo_rx[0] );
             new_cmd = false;
             
             switch ((char)fifo_rx[0])
             {
-            case 'a':       // Movimiento manual antihorario
-                if (isSwitchOn() == FC_AH)
-                { // Si esta al fin del mov antihorario
-                    motor_stop();
-                }
-                else
-                { // Arranco antihorario
+                case 'a':       // Movimiento manual antihorario
                     cuenta_pwm = fifo_rx[1] * 256 + fifo_rx[2]; // Calculo el pwm
                     motor_move_ah(cuenta_pwm);                  // Muevo el motor
                     printf("\r\n-> Movimiento manual en sentido AH\r\n");
-                }
-                break;
-            case 'h':       // Movimiento manual horario
-                if (isSwitchOn() == FC_H)
-                { // Si esta al fin del mov horario
-                    motor_stop();
-                }
-                else
-                { // Arranco horario
+                    break;
+                case 'h':       // Movimiento manual horario
                     cuenta_pwm = fifo_rx[1] * 256 + fifo_rx[2];
                     motor_move_h(cuenta_pwm);
                     printf("\r\n-> Movimiento manual en sentido H\r\n");
+                    break;
+                case 's':       // Stop
+                    motor_stop();
+                    PID_state = false;
+                    break;
+                case 'Z':       // Buscar el cero del encoder
+                    setZero() ; 
+                    break;
+                case 'z':       // Pongo el encoder en cero
+                    set90();       // Para el esclavo vertical
+                    break;
+                case 'u':       // Actualizo el Set Point
+                    set_point = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
+                    printf("\r\n-> Set point: %0.2f\r\n",set_point);
+                    break;
+                case 'p':       // Actualizo el Kp
+                    kp = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
+                    setttings_pid(kp,ki,kd);
+                    printf("\r\n-> Kp: %0.2f\r\n",kp);
+                    break;
+                case 'i':       // Actualizo el Ki
+                    ki = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
+                    setttings_pid(kp,ki,kd);
+                    printf("\r\n-> Ki: %0.2f\r\n",ki);
+                    break;
+                case 'd':       // Actualizo el Kd
+                    kd = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
+                    setttings_pid(kp,ki,kd);
+                    printf("\r\n-> Kd: %0.2f\r\n",kd);
+                    break;
+                case 'o':       // PID ON
+                    printf("\r\n-> PID ON\r\n");
+                    PID_state = true;
+                    counter_test = 0;
+                    break;
+                case '\n':
+                case '\r':
+                case 'g':       // Comando para enviar un angulo
+                    break;
+                default:
+                    printf("\r\nCommand desconocido: %c\r\n", (char)fifo_rx[0]);
+                    break;
                 }
-                break;
-            case 's':       // Stop
-                motor_stop();
-                PID_state = false;
-                break;
-            case 'z':       // Buscar el cero del encoder
-                cero_encoder();
-                break;
-            case 'Z':       // Pongo el encoder en cero
-                //setZero();     // Para el esclavo horizontal
-                set90();       // Para el esclavo vertical
-                break;
-            case 'u':       // Actualizo el Set Point
-                set_point = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
-                printf("\r\n-> Set point: %0.2f\r\n",set_point);
-                break;
-            case 'p':       // Actualizo el Kp
-                kp = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
-                setttings_pid(kp,ki,kd);
-                printf("\r\n-> Kp: %0.2f\r\n",kp);
-                break;
-            case 'i':       // Actualizo el Ki
-                ki = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
-                setttings_pid(kp,ki,kd);
-                printf("\r\n-> Ki: %0.2f\r\n",ki);
-                break;
-            case 'd':       // Actualizo el Kd
-                kd = (fifo_rx[1] * 256 + fifo_rx[2]) / 100.0;
-                setttings_pid(kp,ki,kd);
-                printf("\r\n-> Kd: %0.2f\r\n",kd);
-                break;
-            case 'o':       // PID ON
-                printf("\r\n-> PID ON\r\n");
-                PID_state = true;
-                counter_test = 0;
-                break;
-            case '\n':
-            case '\r':
-            case 'g':       // Comando para enviar un angulo
-                break;
-            default:
-                printf("\r\nCommand desconocido: %c\r\n", (char)fifo_rx[0]);
-                break;
-            }
         }
         // Control de STOP
-        if (marcha_h == true && isSwitchOn() == FC_H)
-        {
-            motor_stop();
-        }
-        if (marcha_ah == true && isSwitchOn() == FC_AH)
-        {
-            motor_stop();
-        }
+        // if (marcha_h == true && isSwitchOn() == FC_H)
+        // {
+        //     motor_stop();
+        // }
+        // if (marcha_ah == true && isSwitchOn() == FC_AH)
+        // {
+        //     motor_stop();
+        // }
         // PID ON
         if (PID_state == true && counter_test >= 100)
         {
@@ -258,24 +242,6 @@ void motor_move_h(uint16_t vel)
     marcha_h = true;
 }
 
-/**
- * @brief Busca el final de carrera del movimiento antihorario para ajustar el cero del encoder
- */
-void cero_encoder(void)
-{
-    if (isSwitchOn() != FC_AH)
-    { // Si no estoy al final de AH
-        printf("-> Buscando la posicion inicial...\r\n");
-        motor_move_ah((uint16_t) (0.75 * TOP_VALUE_COUNT)); // Me muevo AH a un 25% de VMAX
-        getData(&enc_test);
-        printf("--> Angulo: %0.2f \r\n", enc_test.angle);
-        while (isSwitchOn() != FC_AH); // Espero a llegar al final de AH
-        motor_stop();
-    }
-    setZero();
-    getData(&enc_test);
-    printf("-> Fin de rutina de inicio. Angulo: %0.2f \r\n", enc_test.angle);
-}
 
 
 /*================ CORE 1 ====================================================================*/
@@ -283,7 +249,7 @@ void cero_encoder(void)
 /**
  * @brief Rutina para la recepcion via I2C
 */
-void dma_u1(uint8_t *bufferrx)
+volatile void dma_u1(uint8_t *bufferrx)
 {
     /// buffer rx -> data received of dma channel!
     memcpy(fifo_rx, bufferrx, BUFFER_RX);
@@ -296,7 +262,6 @@ volatile void dma_u2(uint16_t *buffertx)
 {
     encoder_quad_t enc;
     getData(&enc);
-    //enc.angle = 33.22f ; 
     //printf("-> Angulo: %0.2f\r\n", enc.angle);
     buffertx[0] = (uint16_t) 'a';    //getState();
     buffertx[1] = (uint16_t)((0xFF00 & ((uint16_t)enc.angle)) >> 8);
