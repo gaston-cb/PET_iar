@@ -26,7 +26,8 @@
         "quadrature_encoders.h": "c",
         "i2c_slave.h": "c",
         "pid_digital.h": "c",
-        "pwm_control.h": "c"
+        "pwm_control.h": "c",
+        "cmath": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     // "files.associations": {

@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-
+#include "math.h"
 #include "pid_digital.h" 
 #include "encoder_analog.h"
 
@@ -31,33 +31,33 @@ void setttings_pid(float proportional, float integral, float derivative){
 
 void compute_pid(float sp, float period_sample) {
     
-    //float error_integral;
+    float error_integral;
     float error_derivativo;
     float output; 
     //_reference = sp; 
     getData(&_encoder);
     error = sp - _encoder.angle; 
-    //last_error = error  ;
-    //error_integral = (error + last_error); 
+    last_error = error  ;
+    error_integral = (error + last_error); 
     error_derivativo = (error - last_error); ///period_sample ; 
     
     //output = error* constants_of_pid[0]+error_derivativo*constants_of_pid[1]+error_integral* constants_of_pid[2] ; 
     
-    output = kp * error + ki * error - kd * error_derivativo; 
+    output = kp * error + ki * error_integral + kd * error_derivativo; 
 
     last_error = error; 
     ///ver si esta trabado el encoder ! 
     
-    if ( sp - _encoder.angle >0){
-        pwm_motor.percent_r = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
-        pwm_motor.percent_l = 0; 
-    }else if( sp - _encoder.angle  == 0){
+    if ( sp - _encoder.angle >0.5){
+        pwm_motor.percent_l = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
+        pwm_motor.percent_r = 0; 
+    }else if( fabs(sp - _encoder.angle) < 0.5){
         pwm_motor.percent_l = 0; 
         pwm_motor.percent_r = 0; 
-    }else if ( sp - _encoder.angle  <0){ 
+    }else if ( sp - _encoder.angle  <(-0.5)){ 
         output = -1.0*output;        
-        pwm_motor.percent_r = 0;      
-        pwm_motor.percent_l = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
+        pwm_motor.percent_l = 0;      
+        pwm_motor.percent_r = (uint16_t) (output*(TOP_VALUE_COUNT)/100.0); 
     }
     set_pwm(&pwm_motor) ; 
 }

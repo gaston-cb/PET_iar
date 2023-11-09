@@ -173,7 +173,7 @@ void main()
         // PID ON
         if (PID_state == true && counter_test >= 100)
         {
-            //printf("\r\n-> Time: %d ms\r\n",counter_test);
+            printf("\r\n-> Time: %d ms\r\n",counter_test);
             compute_pid(set_point,(float)(counter_test / 1000));
             counter_test = 0;
         }
