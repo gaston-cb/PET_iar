@@ -47,12 +47,13 @@ def Rxmessage(client, userdata, message):
     mutex.acquire()
     if (message.topic == TOPICS_SUBSCRIBE_RX[0][0]):
         pet_pointing["altura"] = float(message.payload.decode("utf-8"))
+        if (pet_pointing["altura"]>=90.0 ):
+            pet_pointing["altura"]=90.0
         #print(f' {str(message.payload.decode("utf-8"))}  ') 
     elif (message.topic == TOPICS_SUBSCRIBE_RX[1][0]):
         pet_pointing["azimuth"] = float(message.payload.decode("utf-8"))
         #print(f' {str(message.payload.decode("utf-8"))}  ') 
     mutex.release()
-    print(pet_pointing) 
 
     # print("message qos=",message.qos)
     # print("message retain flag=",message.retain) 
@@ -78,8 +79,7 @@ def mqtt_service(eq):
            break 
         set_point_pet_antenna["altura"]  = num[0] 
         set_point_pet_antenna["azimuth"] = num[1] 
-        #publish a set_point in mqtt broker 
-        
+        client.publish('rotador/pid_v',f'U{num[0]}')
     client.disconnect() 
     print(f'end of service mqtt') 
 
