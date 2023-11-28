@@ -1,7 +1,6 @@
 ﻿from astropy.coordinates import EarthLocation, get_sun, AltAz
 from astropy.time import Time
 import paho.mqtt.client as mqtt
-
 from astropy.coordinates import SkyCoord
 import astropy.units as u
 from queue import Queue
@@ -11,11 +10,13 @@ import threading
 import time
 from bitstring import ConstBitStream
 import coords
+mutex = threading.Lock() 
 POSITION_OF_ANTENNA = [-34.866212, -58.139255] 
-MQTT_BROKER ='localhost'
+MQTT_BROKER ='192.168.1.100'
 PORT_BROKER = 1883
-TOPICS_SUBSCRIBE = ['']
-position_pet = [50, 38]  
+TOPICS_SUBSCRIBE_RX = [("rotador/angulo_v",0),("rotador/angulo_h",0), ("rotador/pid_h",0),("rotador/pid_v",0)]
+TOPICS_SUBSCRIBE_TX = ['']
+
 
 pet_pointing= {
     "azimuth":None, 
@@ -41,11 +42,21 @@ detener_hilo_hijo = threading.Event() #EVENT FOR FINISH MQTT SERVICE IN SCRIPT
 
 
 def Rxmessage(client, userdata, message): 
-    print("message received " ,str(message.payload.decode("utf-8")))
-    print("message topic=",message.topic) # if topic-> update position #uopdate antena_pointing variable
-    print("message qos=",message.qos)
-    print("message retain flag=",message.retain) 
-    #pet_pointing = 
+    #print(TOPICS_SUBSCRIBE_RX[0][0])
+    global mutex 
+    mutex.acquire()
+    if (message.topic == TOPICS_SUBSCRIBE_RX[0][0]):
+        pet_pointing["altura"] = float(message.payload.decode("utf-8"))
+        #print(f' {str(message.payload.decode("utf-8"))}  ') 
+    elif (message.topic == TOPICS_SUBSCRIBE_RX[1][0]):
+        pet_pointing["azimuth"] = float(message.payload.decode("utf-8"))
+        #print(f' {str(message.payload.decode("utf-8"))}  ') 
+    mutex.release()
+    print(pet_pointing) 
+
+    # print("message qos=",message.qos)
+    # print("message retain flag=",message.retain) 
+    # #pet_pointing = 
 
 
 
@@ -55,21 +66,22 @@ def mqtt_service(eq):
     client_name = "rot_iar_pet"
     client =mqtt.Client(client_name)
     client.on_message = Rxmessage
+    client.connect(MQTT_BROKER,port= PORT_BROKER)
+    client.subscribe(TOPICS_SUBSCRIBE_RX)
+    client.loop_start()
     mqtt_pet = True
     while (mqtt_pet): 
 #    while not event.is_set():
         num = eq.get() 
         eq.task_done()
         if (num == 'exit'):
-           mqtt_pet = False
-        set_point_pet_antenna["altura"] = num[0] 
+           break 
+        set_point_pet_antenna["altura"]  = num[0] 
         set_point_pet_antenna["azimuth"] = num[1] 
         #publish a set_point in mqtt broker 
         
+    client.disconnect() 
     print(f'end of service mqtt') 
-    time.sleep(10)
-    print("end mqtt service")
-
 
 
 def set_point_stellarium(evento,cola): 
@@ -78,7 +90,6 @@ def set_point_stellarium(evento,cola):
         if (stellarium_point["dec"]==None and stellarium_point["ra"] == None):
             time.sleep(0.1)
             continue
-        
         current_time = Time(time.time(),format ='unix')            
         aa = AltAz(obstime=current_time, location=pet_station)
         sky_obj = SkyCoord(stellarium_point["ra"], stellarium_point["dec"])
@@ -105,25 +116,25 @@ def send_data_stellarium(sock ,ev):
     count = 0 
     while not ev.is_set():
         try: 
-            # if (pet_pointing["altura"]==None and pet_pointing[altura] ==None):
-            #     time.sleep(0.1) 
-            #     continue 
-            # #convertir altura y azimut a coordenadas ecuatoriales
-            ra_send = position_pet[0]*(math.pi/180.0)    + 0.1 *sum*count #pet_position_pointing FIXME: S
-            dec_send = position_pet[1]*(math.pi/180.0)   + 0.1 *sum*count #pet_position_pointing FIXME: SSD 
+            if (pet_pointing["altura"]==None and pet_pointing["azimuth"] ==None):
+               time.sleep(0.1) 
+               continue 
+            #convertir altura y azimut a coordenadas ecuatoriales
+            current_time = Time(time.time(),format ='unix')  
+            mutex.acquire()
+            aa = SkyCoord(AltAz(alt = pet_pointing["altura"]* u.deg, az =pet_pointing["azimuth"]* u.deg,obstime=current_time, location=pet_station))
+            mutex.release()
 
-            
-            
-            current_time = Time(time.time(),format ='unix')            
-            aa = AltAz(alt = position_pet[0]* u.deg, az = position_pet[1]* u.deg,obstime=current_time, location=pet_station)
-
+            aa_2 = aa.transform_to('icrs')
+            ra_send =  float(aa_2.ra.value) *(math.pi/180.0) #+ 0.1 *sum*count #pet_position_pointing FIXME: S
+            dec_send = float(aa_2.dec.value)*(math.pi/180.0) #+ 0.1 *sum*count #pet_position_pointing FIXME: S
             (ra_p, dec_p) = coords.rad_2_stellarium_protocol(ra_send, dec_send)
             cad_bits_str = 'int:64=%r' % time.time() 
             localtime = ConstBitStream(str.replace(cad_bits_str, '.', ''))
             sdata = ConstBitStream(msize) + ConstBitStream(mtype)
             sdata += ConstBitStream(intle=localtime.intle, length=64) + ConstBitStream(uintle=ra_p, length=32)
             sdata += ConstBitStream(intle=dec_p, length=32) + ConstBitStream(intle=0, length=32)
-            count+1 
+            count = count+1 
             sock.send(sdata.bytes)
             time.sleep(0.5)
         except socket.error: 
@@ -159,7 +170,6 @@ def handle_client(conn, addr,e):
     detener_hilo_hijo.set()
     hilo_dstell.join() 
     hilo_publish.join()
-    print("[thread] client:", addr, 'send:', message)
     print("[thread] ending")
 
 

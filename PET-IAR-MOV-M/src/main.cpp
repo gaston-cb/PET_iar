@@ -140,7 +140,7 @@ void setup()
   mqttClient.subscribe(TOPIC1);
   mqttClient.subscribe(TOPIC2);
   mqttClient.subscribe(TOPIC3);
-  mqttClient.subscribe(TOPIC3);
+  mqttClient.subscribe(TOPIC4);
   mqttClient.loop();
   rotador_h.begin(&Wire);
   rotador_v.begin(&Wire);
@@ -217,7 +217,7 @@ void loop()
       case 'z':           // Set cero
         Serial.println("-> Buscando cero grados...");
         dato_mqtt = 31354;  // 'zz'
-        rotador_h.write(ROT_IAR_REG_CERO, &dato_mqtt);
+        rotador_h.write(ROT_IAR_REG_SETCERO, &dato_mqtt);     // modifique el registro
         mqttClient.publish("rotador/estado_h","BUSCANDO CERO");
         estado_motor_h = CERO;
         break;
@@ -226,6 +226,10 @@ void loop()
         Serial.print("-> Velocidad horizontal: ");
         Serial.println(velocidad_h);
         break;
+      case 'x':                                           // agregue el seteo del maximo en el horizontal
+        dato_mqtt = 31354;  // 'zz'
+        rotador_h.write(ROT_IAR_REG_SETMAX, &dato_mqtt);
+      break ; 
       /*** Casos del control vertical - comandos en MAYUSCULA ***/
       case 'O':       // PID ON
         dato_mqtt = 28527;  // 'oo'
@@ -282,7 +286,7 @@ void loop()
         break ; 
       case 'X': 
         dato_mqtt = 31354;  // 'zz'
-        rotador_v.write(ROT_IAR_REG_CERO, &dato_mqtt);
+        rotador_v.write(ROT_IAR_REG_SETMAX, &dato_mqtt);    // cambie el nombre del registro a SETMAX
         break ;         
       /*** Otros casos ***/
       default:

@@ -15,7 +15,7 @@ typedef enum {
     ROT_IAR_REG_HORARIO = 104,      // 'h' - Comando movimiento manual horario
     ROT_IAR_REG_ANTIHOR = 97,       // 'a' - Comando movimiento manual antihorario
     ROT_IAR_REG_STOP = 115,         // 's' - Comando para parar el motor - STOP
-    ROT_IAR_REG_CERO = 122,         // 'z' - Comando para rutina de cero
+    ROT_IAR_REG_SETMAX = 122,       // 'z' - Comando para rutina de cero
     ROT_IAR_REG_SETCERO = 90,       // 'Z' - Comando para setear el cero
     ROT_IAR_REG_ANGULO = 103,       // 'g' - Comando para leer el angulo
     ROT_IAR_REG_TRACK = 116,        // 't' - Comando para comenzar el movimient
