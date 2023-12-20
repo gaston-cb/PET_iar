@@ -136,7 +136,8 @@ def send_data_stellarium(sock ,ev):
             sdata += ConstBitStream(intle=dec_p, length=32) + ConstBitStream(intle=0, length=32)
             count = count+1 
             sock.send(sdata.bytes)
-            time.sleep(0.5)
+            print(pet_pointing)
+            time.sleep(2)
         except socket.error: 
             print("socket error")
             sock.close() 
