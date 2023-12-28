@@ -53,9 +53,9 @@ bool init_encoder_analog(uint8_t port_analog_read){
     );
     adc_set_clkdiv(9600);
     irq_set_exclusive_handler(ADC_IRQ_FIFO, irq_dma_rx);
-	adc_irq_set_enabled(true);
-	irq_set_enabled(ADC_IRQ_FIFO, true);
-	adc_run(true);
+    adc_irq_set_enabled(true);
+    irq_set_enabled(ADC_IRQ_FIFO, true);
+    adc_run(true);
     encoder.state = STATE_00 ; 
     return true ;   
 } 
@@ -79,8 +79,6 @@ uint16_t get_reference(void){
 
 static volatile void irq_dma_rx(void ){ 
     channel_adc= adc_get_selected_input() ; 
-    //samples_analog[_number_sample] = (uint16_t)adc_hw->fifo;//sample_adc_antenna>=reference?sample_adc_antenna-reference:0 ; 
-    //_number_sample++ ; 
     if (channel_adc == (uint)0){ 
         reference = (uint16_t)adc_hw->fifo; 
         return ; 
@@ -109,7 +107,7 @@ void median_filter(){
     order_samples() ; 
     sample_filter = samples_analog[SAMPLES_NUMBER/2] ; 
     encoder.raw_data = (int16_t)sample_filter ; 
-    encoder.angle = (float)   ((deltay)/deltax)*(float)(encoder.raw_data-value_zero);
+    encoder.angle = (float)((deltay)/deltax)*(float)(encoder.raw_data-value_zero);
 }
 
 

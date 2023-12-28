@@ -304,13 +304,12 @@ void loop()
     //{                               // Pido el valor del angulo y lo envio por mqtt
     rotador_h.read(ROT_IAR_REG_ANGULO, &angulo_h);
     Serial.print("-> Angulo h: ");Serial.print(angulo_h);
-    ftostr(angulo_h,&angulo_str[0]);
+    sprintf(angulo_str,"%.2f",angulo_h);
     mqttClient.publish("rotador/angulo_h",angulo_str);
 
     rotador_v.read(ROT_IAR_REG_ANGULO, &angulo_v);
     Serial.print("-> Angulo v: ");Serial.println(angulo_v);
-    
-    ftostr(angulo_v,&angulo_str[0]);
+    sprintf(angulo_str,"%.2f",angulo_v);
     mqttClient.publish("rotador/angulo_v",angulo_str);
     //}
     // Toggle led - Alive test

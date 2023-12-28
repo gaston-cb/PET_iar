@@ -14,7 +14,7 @@ mutex = threading.Lock()
 POSITION_OF_ANTENNA = [-34.866212, -58.139255] 
 MQTT_BROKER ='192.168.1.100'
 PORT_BROKER = 1883
-TOPICS_SUBSCRIBE_RX = [("rotador/angulo_v",0),("rotador/angulo_h",0), ("rotador/pid_h",0),("rotador/pid_v",0)]
+TOPICS_SUBSCRIBE_RX = [("rotador/angulo_v",0),("rotador/angulo_h",0)]
 TOPICS_SUBSCRIBE_TX = ['']
 
 
