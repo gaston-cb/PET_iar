@@ -76,7 +76,6 @@ uint16_t get_reference(void){
 }
 
 
-
 static volatile void irq_dma_rx(void ){ 
     channel_adc= adc_get_selected_input() ; 
     if (channel_adc == (uint)0){ 
