@@ -64,9 +64,10 @@ void processing_and_send_samples(){
 
     for (i =0 ; i<2000;i++){ 
         printf("%d,%04x,%d\r\n",i,raw_data_analog[i],raw_data_analog[i]) ; 
-    }
-    
+    }    
+
     printf("final de archivo"); 
+
 }
 
 
@@ -79,6 +80,7 @@ void sample_reference(){
 
     for (i =0 ; i<2000;i++){ 
         printf("%d,%04x,%d\r\n",i,reference[i],reference[i]) ; 
+        sleep_ms(1) ; 
     }
 } 
 
@@ -102,6 +104,7 @@ void difference_adc() {
             reference[i], reference[i], 
             raw_data_analog[i],raw_data_analog[i] 
         ) ; 
+        sleep_ms(1) ; 
     }
 
 }
@@ -109,6 +112,7 @@ void difference_adc() {
 
 void read_angle(){ 
     int i = 0 ; 
+    
     for (i = 0 ; i<2000;i++){ 
         sleep_ms(200) ; 
         getData(&enc_test) ; 
@@ -118,5 +122,6 @@ void read_angle(){
     }
     for (i =0 ; i<2000;i++){ 
         printf("%d,%f,%d\r\n",i,angle[i],raw_data_analog[i]) ; 
+        sleep_ms(1) ;
     }
 }

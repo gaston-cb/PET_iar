@@ -1,21 +1,25 @@
 import serial 
 import datetime
-
+import re 
 FILE_SAMPLE = ''
 PORT_SERIAL = '/dev/ttyACM0' 
 BAUDRATE = 115200 
-NAME_FILE= 'data.txt'
+NAME_FILE= '../../../results/TC-II-ADC/TC-II-ADC-REF.txt'
+expresion_regular = r'^\d+(,\d+){0,2}\r\n$'
 
 def read_serial(objSerial,cmd_send):
     print(f'cmd: {cmd_send}')
     objSerial.write(cmd_send.encode('ascii'))
     with open(NAME_FILE,'w') as f: 
         i = 0 
-        while i<2000:
-            str0 = objSerial.readline().decode('ascii') 
-            if (str0[0].isdigit() == True):
-                i =i+1 
+        flag = True
+        while flag:
+            str0 = objSerial.readline().decode('ascii')   
+            if (',' in str0):
+                data = str0.split(',')
                 f.write(str0)
+                if (int(data[0])==2000-1):
+                    flag = False
     
 
 def set_angle(objSerial,cmd_send): 
@@ -29,7 +33,13 @@ def set_angle(objSerial,cmd_send):
 ser = serial.Serial(PORT_SERIAL,BAUDRATE)
 str = input("presione a para continuar ")
 print(datetime.datetime.now())
-read_serial(ser,str) 
+if str!='Z' and str!='z': 
+    read_serial(ser,str) 
+else: 
+    print("presiono zzz")
+
+
+# read_serial(ser,str) 
 ser.close() 
 print(datetime.datetime.now())
-print("end of scripting") 
+# print("end of scripting") 

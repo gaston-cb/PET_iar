@@ -43,7 +43,7 @@ bool init_encoder_analog(uint8_t port_analog_read){
     adc_init() ; 
     //adc_gpio_init(26);
     //adc_select_input(0); 
-    adc_set_round_robin(0x03) ; //0b0011
+    adc_set_round_robin(0x03) ; //0b0011   
     adc_fifo_setup(
         true,     // Write each completed conversion to the sample FIFO
         false,    // Enable DMA data request (DREQ)
