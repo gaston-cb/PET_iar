@@ -51,7 +51,7 @@ bool init_encoder_analog(uint8_t port_analog_read){
         false,    // We won't see the ERR bit because of 8 bit reads; disable.
         false     // Shift each sample to 8 bits when pushing to FIFO
     );
-    adc_set_clkdiv(9600);
+    adc_set_clkdiv(9600); ///sample t = 0.2 ms
     irq_set_exclusive_handler(ADC_IRQ_FIFO, irq_dma_rx);
     adc_irq_set_enabled(true);
     irq_set_enabled(ADC_IRQ_FIFO, true);

@@ -39,6 +39,9 @@ void main()
                 printf("leyendo lecturas de adc dato crudo\r\n"); 
                 sample_reference() ; 
                 break;
+            case 'd':
+                difference_adc() ; 
+                break ; 
             case 'Z':       
                 setZero() ; 
             case 'z':       
