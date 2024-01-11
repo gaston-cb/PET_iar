@@ -1,5 +1,11 @@
 #include <stdint.h>
 #include <stdbool.h>
+/**
+ * MIN_ANGLE = 0.00 
+ * MAX_ANGLE = 90.00 -> VERTICAL 
+ * MAX_ANGLE = 360.00 -> HORIZONTAL 
+ * 
+*/
 #define MIN_ANGLE 0.00
 #define MAX_ANGLE 90.00
 

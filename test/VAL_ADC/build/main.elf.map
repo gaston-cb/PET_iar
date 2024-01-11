@@ -1524,9 +1524,9 @@ Discarded input sections
  .debug_frame   0x00000000      0x14c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
  .ARM.attributes
                 0x00000000       0x2c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
- .text          0x00000000        0x0 /tmp/cctPcJII.o
- .data          0x00000000        0x0 /tmp/cctPcJII.o
- .bss           0x00000000        0x0 /tmp/cctPcJII.o
+ .text          0x00000000        0x0 /tmp/ccu6VPyO.o
+ .data          0x00000000        0x0 /tmp/ccu6VPyO.o
+ .bss           0x00000000        0x0 /tmp/ccu6VPyO.o
  .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
  .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
  .text          0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-atexit.o)
@@ -1790,7 +1790,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nof
 .boot2          0x10000000      0x100
                 0x10000000                        __boot2_start__ = .
  *(.boot2)
- .boot2         0x10000000      0x100 /tmp/cctPcJII.o
+ .boot2         0x10000000      0x100 /tmp/ccu6VPyO.o
                 0x10000100                        __boot2_end__ = .
                 0x00000001                        ASSERT (((__boot2_end__ - __boot2_start__) == 0x100), ERROR: Pico second stage bootloader must be 256 bytes in size)
 
@@ -2749,8 +2749,8 @@ LOAD /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nof
                 0x10007684        0xb main/CMakeFiles/main.dir/main.c.obj
  *fill*         0x1000768f        0x1 
  .rodata.main.str1.4
-                0x10007690       0x31 main/CMakeFiles/main.dir/main.c.obj
- *fill*         0x100076c1        0x3 
+                0x10007690       0x33 main/CMakeFiles/main.dir/main.c.obj
+ *fill*         0x100076c3        0x1 
  .rodata.main   0x100076c4       0x84 main/CMakeFiles/main.dir/main.c.obj
  .rodata.spin_lock_claim_unused.str1.4
                 0x10007748       0x1b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
@@ -3499,7 +3499,7 @@ LOAD main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.
 LOAD main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
 LOAD main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
 LOAD [binary_dir]/libencoder_analog.a
-LOAD /tmp/cctPcJII.o
+LOAD /tmp/ccu6VPyO.o
 LOAD /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a
 LOAD /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
 START GROUP
@@ -3622,7 +3622,7 @@ LOAD linker stubs
  .ARM.attributes
                 0x00000826       0x2c [binary_dir]/libencoder_analog.a(encoder_analog.c.obj)
  .ARM.attributes
-                0x00000852       0x22 /tmp/cctPcJII.o
+                0x00000852       0x22 /tmp/ccu6VPyO.o
  .ARM.attributes
                 0x00000874       0x1e /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
  .ARM.attributes
@@ -3676,109 +3676,109 @@ LOAD linker stubs
                                  0x34 (size before relaxing)
  .comment       0x00000059       0x27 /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtend.o
 
-.debug_info     0x00000000    0x2519f
- .debug_info    0x00000000      0x609 main/CMakeFiles/main.dir/main.c.obj
- .debug_info    0x00000609     0x17d1 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
- .debug_info    0x00001dda      0x1e3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
- .debug_info    0x00001fbd      0x682 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
- .debug_info    0x0000263f      0x5c3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
- .debug_info    0x00002c02     0x1bc3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
- .debug_info    0x000047c5      0x197 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
- .debug_info    0x0000495c     0x1ce9 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
- .debug_info    0x00006645      0x2bf main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
- .debug_info    0x00006904     0x33ad main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
- .debug_info    0x00009cb1     0x13ee main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
- .debug_info    0x0000b09f      0xe63 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
- .debug_info    0x0000bf02      0x2ae main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
- .debug_info    0x0000c1b0      0xd74 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
- .debug_info    0x0000cf24      0xfb7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
- .debug_info    0x0000dedb      0x4ed main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
- .debug_info    0x0000e3c8      0x4c5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
- .debug_info    0x0000e88d      0x1af main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
- .debug_info    0x0000ea3c      0xf17 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
- .debug_info    0x0000f953     0x198a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
- .debug_info    0x000112dd       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
- .debug_info    0x00011300      0x301 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
- .debug_info    0x00011601       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
- .debug_info    0x00011624       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
- .debug_info    0x00011647      0x30b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
- .debug_info    0x00011952       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
- .debug_info    0x00011975       0x24 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
- .debug_info    0x00011999       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
- .debug_info    0x000119bc      0x31f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
- .debug_info    0x00011cdb       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
- .debug_info    0x00011cfe       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
- .debug_info    0x00011d21       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
- .debug_info    0x00011d44      0x25e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
- .debug_info    0x00011fa2     0x173a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
- .debug_info    0x000136dc     0x1003 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
- .debug_info    0x000146df      0x74a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
- .debug_info    0x00014e29     0x170a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
- .debug_info    0x00016533      0x5be main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- .debug_info    0x00016af1      0x269 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
- .debug_info    0x00016d5a     0x1240 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
- .debug_info    0x00017f9a     0x2046 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
- .debug_info    0x00019fe0      0xf9a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
- .debug_info    0x0001af7a     0x399e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
- .debug_info    0x0001e918      0x836 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
- .debug_info    0x0001f14e     0x1a66 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
- .debug_info    0x00020bb4     0x14a2 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
- .debug_info    0x00022056     0x273e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
- .debug_info    0x00024794      0x8e4 [binary_dir]/libencoder_analog.a(encoder_analog.c.obj)
- .debug_info    0x00025078       0x39 /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
- .debug_info    0x000250b1       0xee /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-strlen-stub.o)
+.debug_info     0x00000000    0x25183
+ .debug_info    0x00000000      0x5ed main/CMakeFiles/main.dir/main.c.obj
+ .debug_info    0x000005ed     0x17d1 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+ .debug_info    0x00001dbe      0x1e3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
+ .debug_info    0x00001fa1      0x682 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+ .debug_info    0x00002623      0x5c3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+ .debug_info    0x00002be6     0x1bc3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+ .debug_info    0x000047a9      0x197 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+ .debug_info    0x00004940     0x1ce9 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+ .debug_info    0x00006629      0x2bf main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+ .debug_info    0x000068e8     0x33ad main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
+ .debug_info    0x00009c95     0x13ee main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+ .debug_info    0x0000b083      0xe63 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+ .debug_info    0x0000bee6      0x2ae main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+ .debug_info    0x0000c194      0xd74 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+ .debug_info    0x0000cf08      0xfb7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+ .debug_info    0x0000debf      0x4ed main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+ .debug_info    0x0000e3ac      0x4c5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+ .debug_info    0x0000e871      0x1af main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+ .debug_info    0x0000ea20      0xf17 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+ .debug_info    0x0000f937     0x198a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+ .debug_info    0x000112c1       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+ .debug_info    0x000112e4      0x301 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+ .debug_info    0x000115e5       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+ .debug_info    0x00011608       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+ .debug_info    0x0001162b      0x30b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+ .debug_info    0x00011936       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+ .debug_info    0x00011959       0x24 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+ .debug_info    0x0001197d       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
+ .debug_info    0x000119a0      0x31f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+ .debug_info    0x00011cbf       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+ .debug_info    0x00011ce2       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+ .debug_info    0x00011d05       0x23 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+ .debug_info    0x00011d28      0x25e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+ .debug_info    0x00011f86     0x173a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+ .debug_info    0x000136c0     0x1003 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+ .debug_info    0x000146c3      0x74a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+ .debug_info    0x00014e0d     0x170a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+ .debug_info    0x00016517      0x5be main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ .debug_info    0x00016ad5      0x269 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+ .debug_info    0x00016d3e     0x1240 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+ .debug_info    0x00017f7e     0x2046 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+ .debug_info    0x00019fc4      0xf9a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+ .debug_info    0x0001af5e     0x399e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+ .debug_info    0x0001e8fc      0x836 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+ .debug_info    0x0001f132     0x1a66 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+ .debug_info    0x00020b98     0x14a2 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
+ .debug_info    0x0002203a     0x273e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+ .debug_info    0x00024778      0x8e4 [binary_dir]/libencoder_analog.a(encoder_analog.c.obj)
+ .debug_info    0x0002505c       0x39 /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .debug_info    0x00025095       0xee /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-strlen-stub.o)
 
-.debug_abbrev   0x00000000     0x7a38
- .debug_abbrev  0x00000000      0x1b1 main/CMakeFiles/main.dir/main.c.obj
- .debug_abbrev  0x000001b1      0x3a6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
- .debug_abbrev  0x00000557       0xf8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
- .debug_abbrev  0x0000064f      0x2ce main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
- .debug_abbrev  0x0000091d      0x249 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
- .debug_abbrev  0x00000b66      0x500 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
- .debug_abbrev  0x00001066      0x116 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
- .debug_abbrev  0x0000117c      0x3e8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
- .debug_abbrev  0x00001564      0x1ce main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
- .debug_abbrev  0x00001732      0x5c3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
- .debug_abbrev  0x00001cf5      0x3d5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
- .debug_abbrev  0x000020ca      0x290 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
- .debug_abbrev  0x0000235a      0x10f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
- .debug_abbrev  0x00002469      0x349 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
- .debug_abbrev  0x000027b2      0x434 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
- .debug_abbrev  0x00002be6      0x1e7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
- .debug_abbrev  0x00002dcd      0x1a8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
- .debug_abbrev  0x00002f75      0x10c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
- .debug_abbrev  0x00003081      0x530 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
- .debug_abbrev  0x000035b1      0x38a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
- .debug_abbrev  0x0000393b       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
- .debug_abbrev  0x0000394d      0x167 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
- .debug_abbrev  0x00003ab4       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
- .debug_abbrev  0x00003ac6       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
- .debug_abbrev  0x00003ad8      0x1c3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
- .debug_abbrev  0x00003c9b       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
- .debug_abbrev  0x00003cad       0x14 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
- .debug_abbrev  0x00003cc1       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
- .debug_abbrev  0x00003cd3      0x1c6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
- .debug_abbrev  0x00003e99       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
- .debug_abbrev  0x00003eab       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
- .debug_abbrev  0x00003ebd       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
- .debug_abbrev  0x00003ecf       0xb8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
- .debug_abbrev  0x00003f87      0x47a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
- .debug_abbrev  0x00004401      0x485 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
- .debug_abbrev  0x00004886      0x2ca main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
- .debug_abbrev  0x00004b50      0x543 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
- .debug_abbrev  0x00005093      0x15a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- .debug_abbrev  0x000051ed      0x181 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
- .debug_abbrev  0x0000536e      0x2bd main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
- .debug_abbrev  0x0000562b      0x563 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
- .debug_abbrev  0x00005b8e      0x449 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
- .debug_abbrev  0x00005fd7      0x61a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
- .debug_abbrev  0x000065f1      0x2e8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
- .debug_abbrev  0x000068d9      0x4b9 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
- .debug_abbrev  0x00006d92      0x472 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
- .debug_abbrev  0x00007204      0x47a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
- .debug_abbrev  0x0000767e      0x30c [binary_dir]/libencoder_analog.a(encoder_analog.c.obj)
- .debug_abbrev  0x0000798a       0x1f /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
- .debug_abbrev  0x000079a9       0x8f /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-strlen-stub.o)
+.debug_abbrev   0x00000000     0x7a1a
+ .debug_abbrev  0x00000000      0x193 main/CMakeFiles/main.dir/main.c.obj
+ .debug_abbrev  0x00000193      0x3a6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+ .debug_abbrev  0x00000539       0xf8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
+ .debug_abbrev  0x00000631      0x2ce main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+ .debug_abbrev  0x000008ff      0x249 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+ .debug_abbrev  0x00000b48      0x500 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+ .debug_abbrev  0x00001048      0x116 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+ .debug_abbrev  0x0000115e      0x3e8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+ .debug_abbrev  0x00001546      0x1ce main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+ .debug_abbrev  0x00001714      0x5c3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
+ .debug_abbrev  0x00001cd7      0x3d5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+ .debug_abbrev  0x000020ac      0x290 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+ .debug_abbrev  0x0000233c      0x10f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+ .debug_abbrev  0x0000244b      0x349 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+ .debug_abbrev  0x00002794      0x434 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+ .debug_abbrev  0x00002bc8      0x1e7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+ .debug_abbrev  0x00002daf      0x1a8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+ .debug_abbrev  0x00002f57      0x10c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+ .debug_abbrev  0x00003063      0x530 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+ .debug_abbrev  0x00003593      0x38a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+ .debug_abbrev  0x0000391d       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+ .debug_abbrev  0x0000392f      0x167 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+ .debug_abbrev  0x00003a96       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+ .debug_abbrev  0x00003aa8       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+ .debug_abbrev  0x00003aba      0x1c3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+ .debug_abbrev  0x00003c7d       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+ .debug_abbrev  0x00003c8f       0x14 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+ .debug_abbrev  0x00003ca3       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
+ .debug_abbrev  0x00003cb5      0x1c6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+ .debug_abbrev  0x00003e7b       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+ .debug_abbrev  0x00003e8d       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+ .debug_abbrev  0x00003e9f       0x12 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+ .debug_abbrev  0x00003eb1       0xb8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+ .debug_abbrev  0x00003f69      0x47a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+ .debug_abbrev  0x000043e3      0x485 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+ .debug_abbrev  0x00004868      0x2ca main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+ .debug_abbrev  0x00004b32      0x543 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+ .debug_abbrev  0x00005075      0x15a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ .debug_abbrev  0x000051cf      0x181 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+ .debug_abbrev  0x00005350      0x2bd main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+ .debug_abbrev  0x0000560d      0x563 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+ .debug_abbrev  0x00005b70      0x449 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+ .debug_abbrev  0x00005fb9      0x61a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+ .debug_abbrev  0x000065d3      0x2e8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+ .debug_abbrev  0x000068bb      0x4b9 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+ .debug_abbrev  0x00006d74      0x472 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
+ .debug_abbrev  0x000071e6      0x47a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+ .debug_abbrev  0x00007660      0x30c [binary_dir]/libencoder_analog.a(encoder_analog.c.obj)
+ .debug_abbrev  0x0000796c       0x1f /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x0000798b       0x8f /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-strlen-stub.o)
 
 .debug_loclists
                 0x00000000     0xdd69
@@ -3962,149 +3962,149 @@ LOAD linker stubs
                 0x000016f8       0x20 /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-strlen-stub.o)
 
 .debug_rnglists
-                0x00000000     0x16ac
+                0x00000000     0x16a0
  .debug_rnglists
-                0x00000000       0x38 main/CMakeFiles/main.dir/main.c.obj
+                0x00000000       0x2c main/CMakeFiles/main.dir/main.c.obj
  .debug_rnglists
-                0x00000038       0xec main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+                0x0000002c       0xec main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
  .debug_rnglists
-                0x00000124       0x19 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
+                0x00000118       0x19 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
  .debug_rnglists
-                0x0000013d       0x31 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+                0x00000131       0x31 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
  .debug_rnglists
-                0x0000016e       0x3d main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+                0x00000162       0x3d main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
  .debug_rnglists
-                0x000001ab       0xf0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x0000019f       0xf0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
  .debug_rnglists
-                0x0000029b       0x13 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+                0x0000028f       0x13 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
  .debug_rnglists
-                0x000002ae       0xcf main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+                0x000002a2       0xcf main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
  .debug_rnglists
-                0x0000037d       0x1f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+                0x00000371       0x1f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
  .debug_rnglists
-                0x0000039c      0x17a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
+                0x00000390      0x17a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
  .debug_rnglists
-                0x00000516       0x6a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x0000050a       0x6a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  .debug_rnglists
-                0x00000580       0x8e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+                0x00000574       0x8e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
  .debug_rnglists
-                0x0000060e       0x13 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+                0x00000602       0x13 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
  .debug_rnglists
-                0x00000621       0x62 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+                0x00000615       0x62 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
  .debug_rnglists
-                0x00000683       0x51 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+                0x00000677       0x51 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
  .debug_rnglists
-                0x000006d4       0x1a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+                0x000006c8       0x1a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
  .debug_rnglists
-                0x000006ee       0x3d main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+                0x000006e2       0x3d main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
  .debug_rnglists
-                0x0000072b       0x1f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+                0x0000071f       0x1f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
  .debug_rnglists
-                0x0000074a       0x7a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+                0x0000073e       0x7a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
  .debug_rnglists
-                0x000007c4       0xc2 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x000007b8       0xc2 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .debug_rnglists
-                0x00000886       0x49 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+                0x0000087a       0x49 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
  .debug_rnglists
-                0x000008cf       0x2b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+                0x000008c3       0x2b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
  .debug_rnglists
-                0x000008fa       0x2c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+                0x000008ee       0x2c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
  .debug_rnglists
-                0x00000926       0xed main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x0000091a       0xed main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
  .debug_rnglists
-                0x00000a13       0x21 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+                0x00000a07       0x21 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
  .debug_rnglists
-                0x00000a34       0x99 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x00000a28       0x99 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
  .debug_rnglists
-                0x00000acd       0xdf main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
+                0x00000ac1       0xdf main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
  .debug_rnglists
-                0x00000bac       0x20 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+                0x00000ba0       0x20 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
  .debug_rnglists
-                0x00000bcc       0x38 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+                0x00000bc0       0x38 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
  .debug_rnglists
-                0x00000c04       0x25 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+                0x00000bf8       0x25 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
  .debug_rnglists
-                0x00000c29       0x1b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+                0x00000c1d       0x1b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
  .debug_rnglists
-                0x00000c44      0x117 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x00000c38      0x117 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
  .debug_rnglists
-                0x00000d5b       0x6e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+                0x00000d4f       0x6e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
  .debug_rnglists
-                0x00000dc9       0x3d main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x00000dbd       0x3d main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .debug_rnglists
-                0x00000e06       0x83 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x00000dfa       0x83 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .debug_rnglists
-                0x00000e89       0x1f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+                0x00000e7d       0x1f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
  .debug_rnglists
-                0x00000ea8       0x2b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+                0x00000e9c       0x2b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
  .debug_rnglists
-                0x00000ed3       0x46 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+                0x00000ec7       0x46 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
  .debug_rnglists
-                0x00000f19      0x102 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x00000f0d      0x102 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
  .debug_rnglists
-                0x0000101b       0x4f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+                0x0000100f       0x4f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
  .debug_rnglists
-                0x0000106a      0x259 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x0000105e      0x259 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .debug_rnglists
-                0x000012c3       0x3e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x000012b7       0x3e main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
  .debug_rnglists
-                0x00001301       0xc7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x000012f5       0xc7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
  .debug_rnglists
-                0x000013c8       0xe0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
+                0x000013bc       0xe0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
  .debug_rnglists
-                0x000014a8      0x204 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x0000149c      0x204 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
 
-.debug_line     0x00000000    0x15b1a
- .debug_line    0x00000000      0x4b9 main/CMakeFiles/main.dir/main.c.obj
- .debug_line    0x000004b9      0xb58 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
- .debug_line    0x00001011      0x1e5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
- .debug_line    0x000011f6      0x3b8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
- .debug_line    0x000015ae      0x3be main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
- .debug_line    0x0000196c      0xebb main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
- .debug_line    0x00002827      0x1ad main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
- .debug_line    0x000029d4      0xf21 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
- .debug_line    0x000038f5      0x237 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
- .debug_line    0x00003b2c     0x16dc main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
- .debug_line    0x00005208      0xae1 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
- .debug_line    0x00005ce9      0x6b3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
- .debug_line    0x0000639c      0x285 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
- .debug_line    0x00006621      0x74c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
- .debug_line    0x00006d6d      0x907 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
- .debug_line    0x00007674      0x4af main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
- .debug_line    0x00007b23      0x3b0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
- .debug_line    0x00007ed3      0x224 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
- .debug_line    0x000080f7      0x9f6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
- .debug_line    0x00008aed     0x116f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
- .debug_line    0x00009c5c      0x11a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
- .debug_line    0x00009d76      0x1e6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
- .debug_line    0x00009f5c      0x2a9 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
- .debug_line    0x0000a205      0x3fa main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
- .debug_line    0x0000a5ff      0x2a4 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
- .debug_line    0x0000a8a3      0x66c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
- .debug_line    0x0000af0f       0x61 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
- .debug_line    0x0000af70      0x3b2 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
- .debug_line    0x0000b322      0x2a7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
- .debug_line    0x0000b5c9      0x198 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
- .debug_line    0x0000b761       0x94 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
- .debug_line    0x0000b7f5       0xa5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
- .debug_line    0x0000b89a      0x14b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
- .debug_line    0x0000b9e5      0xe15 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
- .debug_line    0x0000c7fa      0x8b0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
- .debug_line    0x0000d0aa      0x3f4 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
- .debug_line    0x0000d49e      0xbe8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
- .debug_line    0x0000e086      0x288 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- .debug_line    0x0000e30e      0x2ab main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
- .debug_line    0x0000e5b9      0x7c1 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
- .debug_line    0x0000ed7a      0xdbc main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
- .debug_line    0x0000fb36      0x975 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
- .debug_line    0x000104ab     0x1d83 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
- .debug_line    0x0001222e      0x433 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
- .debug_line    0x00012661      0xd11 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
- .debug_line    0x00013372      0xb10 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
- .debug_line    0x00013e82     0x1545 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
- .debug_line    0x000153c7      0x597 [binary_dir]/libencoder_analog.a(encoder_analog.c.obj)
- .debug_line    0x0001595e       0x4a /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
- .debug_line    0x000159a8      0x172 /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-strlen-stub.o)
+.debug_line     0x00000000    0x15b18
+ .debug_line    0x00000000      0x4b7 main/CMakeFiles/main.dir/main.c.obj
+ .debug_line    0x000004b7      0xb58 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+ .debug_line    0x0000100f      0x1e5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
+ .debug_line    0x000011f4      0x3b8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+ .debug_line    0x000015ac      0x3be main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+ .debug_line    0x0000196a      0xebb main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+ .debug_line    0x00002825      0x1ad main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+ .debug_line    0x000029d2      0xf21 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+ .debug_line    0x000038f3      0x237 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+ .debug_line    0x00003b2a     0x16dc main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_time/time.c.obj
+ .debug_line    0x00005206      0xae1 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+ .debug_line    0x00005ce7      0x6b3 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+ .debug_line    0x0000639a      0x285 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+ .debug_line    0x0000661f      0x74c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+ .debug_line    0x00006d6b      0x907 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+ .debug_line    0x00007672      0x4af main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+ .debug_line    0x00007b21      0x3b0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+ .debug_line    0x00007ed1      0x224 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+ .debug_line    0x000080f5      0x9f6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+ .debug_line    0x00008aeb     0x116f main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+ .debug_line    0x00009c5a      0x11a main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+ .debug_line    0x00009d74      0x1e6 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+ .debug_line    0x00009f5a      0x2a9 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+ .debug_line    0x0000a203      0x3fa main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+ .debug_line    0x0000a5fd      0x2a4 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+ .debug_line    0x0000a8a1      0x66c main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+ .debug_line    0x0000af0d       0x61 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+ .debug_line    0x0000af6e      0x3b2 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
+ .debug_line    0x0000b320      0x2a7 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+ .debug_line    0x0000b5c7      0x198 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+ .debug_line    0x0000b75f       0x94 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+ .debug_line    0x0000b7f3       0xa5 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+ .debug_line    0x0000b898      0x14b main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+ .debug_line    0x0000b9e3      0xe15 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+ .debug_line    0x0000c7f8      0x8b0 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+ .debug_line    0x0000d0a8      0x3f4 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+ .debug_line    0x0000d49c      0xbe8 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+ .debug_line    0x0000e084      0x288 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ .debug_line    0x0000e30c      0x2ab main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+ .debug_line    0x0000e5b7      0x7c1 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+ .debug_line    0x0000ed78      0xdbc main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+ .debug_line    0x0000fb34      0x975 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+ .debug_line    0x000104a9     0x1d83 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+ .debug_line    0x0001222c      0x433 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+ .debug_line    0x0001265f      0xd11 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+ .debug_line    0x00013370      0xb10 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
+ .debug_line    0x00013e80     0x1545 main/CMakeFiles/main.dir/home/gvaldez/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+ .debug_line    0x000153c5      0x597 [binary_dir]/libencoder_analog.a(encoder_analog.c.obj)
+ .debug_line    0x0001595c       0x4a /usr/lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .debug_line    0x000159a6      0x172 /usr/lib/gcc/arm-none-eabi/12.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a(lib_a-strlen-stub.o)
 
 .debug_str      0x00000000     0x78f8
  .debug_str     0x00000000      0x311 main/CMakeFiles/main.dir/main.c.obj

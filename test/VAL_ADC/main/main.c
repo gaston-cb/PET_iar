@@ -19,6 +19,8 @@ uint16_t difference[2000] ;
 float angle[2000] ; 
 void read_angle(); 
 void sample_reference() ; 
+void difference_adc() ; 
+
 void processing_and_send_samples() ; 
 /*================ MAIN CORE 0 ===============================================================*/
 void main()
@@ -48,8 +50,9 @@ void main()
                 set90();     
                 break;
             case 'b':
-                printf("obtain angle") ; 
+                printf("reading angle\r\n") ; 
                 read_angle() ; 
+                break ; 
             default:
                 break;
         }
