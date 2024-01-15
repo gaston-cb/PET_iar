@@ -10,7 +10,7 @@ static uint16_t samples_analog[SAMPLES_NUMBER] ;
 static uint8_t _number_sample = 0 ; 
 static int16_t value_zero = 0; 
 static int16_t value_max  = 4096; 
-static float deltay = 90.0; 
+static float deltay = MAX_ANGLE; 
 static volatile uint16_t  sample_adc_antenna; 
 volatile static uint channel_adc = 0 ; 
 volatile static uint16_t reference ; 

@@ -46,6 +46,7 @@ void main()
                 break ; 
             case 'Z':       
                 setZero() ; 
+                break ; 
             case 'z':       
                 set90();     
                 break;

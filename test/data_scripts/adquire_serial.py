@@ -4,7 +4,7 @@ import re
 FILE_SAMPLE = ''
 PORT_SERIAL = '/dev/ttyACM0' 
 BAUDRATE = 115200 
-NAME_FILE= '../../../results/TC-IV-ADC/VERT/TC-IV-ADC-1.50.txt'
+NAME_FILE= '../../../results/TC-V-ADC/VERT/TC-V-ADC-3.00.txt'
 expresion_regular = r'^\d+(,\d+){0,2}\r\n$'
 
 def read_serial(objSerial,cmd_send):
@@ -36,8 +36,8 @@ print(datetime.datetime.now())
 if str!='Z' and str!='z': 
     read_serial(ser,str) 
 else: 
-    print("presiono zzz")
-
+    ser.write(str.encode('ascii'))
+    print(f"ESCRIBI {str}")
 
 # read_serial(ser,str) 
 ser.close() 
