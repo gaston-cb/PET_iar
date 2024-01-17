@@ -37,8 +37,7 @@ deactivate () {
 
 # unset irrelevant variables
 deactivate nondestructive
-
-VIRTUAL_ENV="/home/gvaldez/Documents/PET/PET_iar/test/data_scripts/read_serial"
+VIRTUAL_ENV="/c/Users/gaston/Documents/PET/PET_iar/test/data_scripts/read_serial"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
