@@ -29,7 +29,9 @@
         "pwm_control.h": "c",
         "cmath": "c",
         "encoder_analog.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "irq.h": "c",
+        "adc.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     // "files.associations": {
