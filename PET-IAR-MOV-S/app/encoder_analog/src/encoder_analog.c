@@ -20,7 +20,7 @@ static int16_t deltax = 4096 ;
 static void order_samples() ; 
 static void median_filter() ; 
 static volatile void irq_dma_rx(void ) ; 
-
+static volatile void promedio() ; 
 
 void getData(encoder_quad_t *quadrature_enc) {
     memcpy(quadrature_enc ,&encoder ,sizeof(encoder_quad_t)) ; 
@@ -85,14 +85,15 @@ static volatile void irq_dma_rx(void ){
         sample_adc_antenna = (uint16_t)adc_hw->fifo ; 
         samples_analog[_number_sample] = sample_adc_antenna>=reference?sample_adc_antenna:0 ; 
         _number_sample++ ; 
+
     }else{
         return ; 
     }
     if (_number_sample == SAMPLES_NUMBER){ 
      	//adc_run(false);
-
+        promedio() ; 
         _number_sample = 0 ; 
-        median_filter() ; 
+    //    median_filter() ; 
      	//adc_run(true);
 
     }
@@ -126,4 +127,23 @@ void order_samples(){
         } 
 
     }
+}
+
+
+static volatile void promedio(){ 
+    int32_t promedio = 0 ; 
+    for (int i = 0 ; i<SAMPLES_NUMBER;i++){ 
+        promedio = promedio + (int32_t) samples_analog[i] ;
+    }
+    promedio = promedio/SAMPLES_NUMBER; 
+    sample_filter = (int16_t) promedio ; 
+    encoder.raw_data = (int16_t)sample_filter ; 
+    encoder.angle = (float)((deltay)/deltax)*(float)(encoder.raw_data-value_zero);
+    if (encoder.angle>=MAX_ANGLE){
+        encoder.angle= MAX_ANGLE ; 
+    }else if (encoder.angle<=MIN_ANGLE){
+        encoder.angle= MIN_ANGLE ; 
+    }
+
+
 }

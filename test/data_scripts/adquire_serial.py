@@ -5,11 +5,12 @@ import time
 FILE_SAMPLE = ''
 PORT_SERIAL = '/dev/ttyACM0' 
 BAUDRATE = 115200 
-NAME_FILE= '../../../results/TC-V-ADC/VERT/TC-V-ADC-3.10.txt'
+NAME_FILE= '../../../resultsv3/TC-I-ADC/TC-I-ADC-0.50.txt'
 expresion_regular = r'^\d+(,\d+){0,2}\r\n$'
 
 def read_serial(objSerial,cmd_send):
     print(f'cmd: {cmd_send}')
+    ##FIXME: FILE EXIST ?? --> RENAMEFILE
     objSerial.write(cmd_send.encode('ascii'))
     with open(NAME_FILE,'w') as f: 
         i = 0 
