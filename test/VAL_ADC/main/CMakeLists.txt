@@ -19,3 +19,4 @@ target_link_libraries(main
 pico_enable_stdio_usb(main 1) 
 #pico_enable_stdio_uart(main 0) 
 # pull in common dependencies
+pico_add_extra_outputs(main)

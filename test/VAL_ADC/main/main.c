@@ -20,9 +20,9 @@ float angle[2000] ;
 void read_angle(); 
 void sample_reference() ; 
 void difference_adc() ; 
-
 void processing_and_send_samples() ; 
 /*================ MAIN CORE 0 ===============================================================*/
+
 void main()
 {
     stdio_init_all();
@@ -60,6 +60,7 @@ void main()
     }
 
 }
+
 
 void processing_and_send_samples(){ 
     int i = 0 ;     

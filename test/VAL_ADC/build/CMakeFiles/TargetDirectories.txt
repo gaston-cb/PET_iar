@@ -166,8 +166,13 @@
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/pico-sdk/docs/CMakeFiles/edit_cache.dir
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/pico-sdk/docs/CMakeFiles/rebuild_cache.dir
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/CMakeFiles/main.dir
+/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/CMakeFiles/ELF2UF2Build.dir
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/CMakeFiles/edit_cache.dir
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/CMakeFiles/rebuild_cache.dir
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/CMakeFiles/encoder_analog.dir
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/CMakeFiles/edit_cache.dir
 /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/CMakeFiles/rebuild_cache.dir
+/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/[binary_dir]/CMakeFiles/portsRP2040.dir
+/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/[binary_dir]/CMakeFiles/ADS1115.dir
+/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/[binary_dir]/CMakeFiles/edit_cache.dir
+/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/[binary_dir]/CMakeFiles/rebuild_cache.dir

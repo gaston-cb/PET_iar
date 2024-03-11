@@ -31,7 +31,8 @@
         "encoder_analog.h": "c",
         "stdlib.h": "c",
         "irq.h": "c",
-        "adc.h": "c"
+        "adc.h": "c",
+        "ads1115.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     // "files.associations": {

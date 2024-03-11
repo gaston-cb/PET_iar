@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "[binary_dir]/[binary_dir]",
+		"source" : "/home/gvaldez/Documents/PET/PET_iar/PET-IAR-MOV-S/app/ADS1115"
+	}
+}

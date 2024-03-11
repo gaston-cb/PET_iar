@@ -6,8 +6,10 @@
  * MAX_ANGLE = 360.00 -> HORIZONTAL 
  * 
 */
+
 #define MIN_ANGLE 0.00
 #define MAX_ANGLE 90.00
+#define CONSTANT_OF_CALIBRATION_ADC 0.978029
 
 typedef enum{
     STATE_00 = 0  , //00
