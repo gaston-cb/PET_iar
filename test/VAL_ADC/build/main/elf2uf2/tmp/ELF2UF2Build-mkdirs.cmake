@@ -5,18 +5,18 @@ cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
   "/home/gvaldez/pico/pico-sdk/tools/elf2uf2"
-  "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/elf2uf2"
-  "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/elf2uf2"
-  "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/elf2uf2/tmp"
-  "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp"
-  "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/elf2uf2/src"
-  "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp"
+  "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/elf2uf2"
+  "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/main/elf2uf2"
+  "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/main/elf2uf2/tmp"
+  "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp"
+  "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/main/elf2uf2/src"
+  "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/main/elf2uf2/src/ELF2UF2Build-stamp${cfgdir}") # cfgdir has leading slash
 endif()

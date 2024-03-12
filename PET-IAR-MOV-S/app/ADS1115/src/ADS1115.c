@@ -241,16 +241,15 @@ static void alertDRYport(ADS1115_alert_comparator_t alert_user){
 //		ADS1x15.config_register.COMP_MODE = 1 ;
 
 	}else if (alert_user.enableAlert == ON_COMPARATOR){
-		ADS1x15.config_register.COMP_QUE  = 2 ;
-		ADS1x15.config_register.COMP_MODE = 0 ;
-		ADS1x15.config_register.COMP_POL = alert_user.polarity_alert ;
-		alert_user.HI_Thresh = alert_user.HI_Thresh<<4 ;
-		alert_user.LO_Thresh = alert_user.LO_Thresh<<4 ;
-		buffer_config_hi_thresh[1] = (uint8_t) (alert_user.HI_Thresh>>8);
-		buffer_config_hi_thresh[2] = (uint8_t) (alert_user.HI_Thresh);
-		buffer_config_lo_thresh[1] = (uint8_t) (alert_user.LO_Thresh>>8);
-		buffer_config_lo_thresh[2] = (uint8_t) (alert_user.LO_Thresh);
-
+		ADS1x15.config_register.COMP_QUE  = 2 						     ;
+		ADS1x15.config_register.COMP_MODE = 0 						     ;
+		ADS1x15.config_register.COMP_POL = alert_user.polarity_alert 	 ;
+		alert_user.HI_Thresh = alert_user.HI_Thresh<<4 				     ;
+		alert_user.LO_Thresh = alert_user.LO_Thresh<<4 				     ;
+		buffer_config_hi_thresh[1] = (uint8_t) (alert_user.HI_Thresh>>8) ;
+		buffer_config_hi_thresh[2] = (uint8_t) (alert_user.HI_Thresh)    ;
+		buffer_config_lo_thresh[1] = (uint8_t) (alert_user.LO_Thresh>>8) ;
+		buffer_config_lo_thresh[2] = (uint8_t) (alert_user.LO_Thresh)    ;
 		I2CWriteToSlave(ADS1x15.I2C_address, buffer_config_hi_thresh, 3) ;
 		I2CWriteToSlave(ADS1x15.I2C_address, buffer_config_lo_thresh, 3) ;
 
@@ -283,7 +282,7 @@ static void alertDRYport(ADS1115_alert_comparator_t alert_user){
 /// I2C.
 /// La función lee el valor del adc y lo transforma en un valor de tension en
 /// volts
-float getVoltage(){
+float getVoltage(uint8_t *raw_adc_ads){
 		uint8_t address_pointer  ;
 		uint8_t raw_data[3] = {0x01,0,0} ;
 		uint8_t read_data[2] ;
@@ -306,6 +305,7 @@ float getVoltage(){
 		read_data[0] = read_data[1] ;
 		read_data[1] = aux ;
 		// convert to voltage
+		memcpy(raw_adc_ads,read_data,2); 
 		memcpy (&voltage,read_data,sizeof(int16_t) ) ;
 		voltage = voltage  ;
 		volt = (voltage) * factor_conv_ad ;

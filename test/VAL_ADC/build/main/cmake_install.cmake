@@ -1,4 +1,4 @@
-# Install script for directory: /home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/main
+# Install script for directory: /home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

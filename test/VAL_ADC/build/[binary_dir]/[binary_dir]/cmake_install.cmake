@@ -1,4 +1,4 @@
-# Install script for directory: /home/gvaldez/Documents/PET/PET_iar/PET-IAR-MOV-S/app/ADS1115
+# Install script for directory: /home/gvaldez/Documentos/rot_iar/PET_iar/PET-IAR-MOV-S/app/ADS1115
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

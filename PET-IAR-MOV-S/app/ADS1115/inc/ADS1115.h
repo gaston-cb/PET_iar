@@ -102,4 +102,4 @@ uint8_t ADS1115init(uint8_t i2c_address, ADS1x15_config_t *ads1115Config) ;
 void setMode(ADS1115x_mode_measurment_t mode);
 void setPGA(ADS1x15_PGA_values_t ADS115xPGA) ; // cambiar PGA en contexto de ejecución
 void selectChannel(ADS1x15_channel_t channel ) ;
-float getVoltage() ;
+float getVoltage(uint8_t *raw_adc_ads) ;

@@ -1,4 +1,4 @@
-# Install script for directory: /home/gvaldez/Documents/PET/PET_iar/PET-IAR-MOV-S/app/encoder_analog
+# Install script for directory: /home/gvaldez/Documentos/rot_iar/PET_iar/PET-IAR-MOV-S/app/encoder_analog
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/[binary_dir]/[binary_dir]/cmake_install.cmake")
+  include("/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/[binary_dir]/[binary_dir]/cmake_install.cmake")
 
 endif()
 

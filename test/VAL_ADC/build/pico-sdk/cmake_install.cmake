@@ -39,9 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/pico-sdk/tools/cmake_install.cmake")
-  include("/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/pico-sdk/src/cmake_install.cmake")
-  include("/home/gvaldez/Documents/PET/PET_iar/test/VAL_ADC/build/pico-sdk/docs/cmake_install.cmake")
+  include("/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/pico-sdk/tools/cmake_install.cmake")
+  include("/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/pico-sdk/src/cmake_install.cmake")
+  include("/home/gvaldez/Documentos/rot_iar/PET_iar/test/VAL_ADC/build/pico-sdk/docs/cmake_install.cmake")
 
 endif()
 
